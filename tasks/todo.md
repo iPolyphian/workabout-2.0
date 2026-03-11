@@ -59,15 +59,15 @@ Split-view search page (list + map), filters with URL sync, property cards, resp
    - [ ] [manual] Card renders with thumbnail, name, city, rating, badges, and price in a compact layout
    - [ ] [manual] Hover state shows subtle visual feedback (elevation or border)
 
-3. [ ] Filter bar with URL sync → v0.2.2
+3. [x] Filter bar with URL sync → v0.2.2 *(completed 02:55 11/03/26)*
    Contract:
-   - [ ] [auto] Filter bar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/filter-bar.tsx exists
-   - [ ] [auto] Filter drawer exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/filter-drawer.tsx exists
-   - [ ] [auto] Search params hook exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/hooks/use-search-params-state.ts exists
-   - [ ] [auto] Hook reads URL params. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/hooks/use-search-params-state.ts contains useSearchParams
-   - [ ] [auto] Popover component installed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/popover.tsx exists
-   - [ ] [auto] Slider component installed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/slider.tsx exists
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Filter bar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/filter-bar.tsx exists
+   - [x] [auto] Filter drawer exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/filter-drawer.tsx exists
+   - [x] [auto] Search params hook exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/hooks/use-search-params-state.ts exists
+   - [x] [auto] Hook reads URL params. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/hooks/use-search-params-state.ts contains useSearchParams
+   - [x] [auto] Popover component installed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/popover.tsx exists
+   - [x] [auto] Slider component installed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/slider.tsx exists
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] Selecting filters updates the URL bar in real time
    - [ ] [manual] Pasting a URL with filter params pre-selects the correct filters
    - [ ] [manual] "Clear all" resets filters and URL
