@@ -35,65 +35,19 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-### Project Scaffold & Design System [INFRA] (v0.1.x)
-Plan: `.claude/plans/project-scaffold.md`
-
-1. [x] Next.js project init + Tailwind + shadcn/ui + folder structure → v0.1.0 *(completed 01:28 11/03/26)*
-   Contract:
-   - [x] [auto] Next.js builds successfully. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [x] [auto] Tailwind globals exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css exists
-   - [x] [auto] shadcn/ui configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/components.json exists
-   - [x] [auto] Route group structure exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx exists
-   - [x] [auto] Path aliases configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tsconfig.json contains @/
-
-2. [x] Design system tokens + base component variants → v0.1.1 *(completed 01:35 11/03/26)*
-   Contract:
-   - [x] [auto] DM Sans font loaded. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains DM_Sans
-   - [x] [auto] Design tokens defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --teal
-   - [x] [auto] Dark mode variables present. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains .dark
-   - [x] [auto] Tailwind brand colors in CSS theme. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --color-teal
-   - [x] [auto] Button component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/button.tsx exists
-   - [x] [auto] Badge component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/badge.tsx exists
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Fonts render correctly (DM Sans body, Fira Code mono)
-   - [ ] [manual] Colors match blueprint -- teal primary (#0d9488), amber secondary (#d97706)
-
-3. [x] Layout shell -- collapsible sidebar + topbar + role-aware nav → v0.1.2 *(completed 01:40 11/03/26)*
-   Contract:
-   - [x] [auto] Sidebar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/sidebar.tsx exists
-   - [x] [auto] Topbar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/topbar.tsx exists
-   - [x] [auto] App shell component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/app-shell.tsx exists
-   - [x] [auto] Route group layout uses app shell. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx contains AppShell
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Sidebar collapses/expands with smooth animation
-   - [ ] [manual] Active nav item highlighted with teal accent
-   - [ ] [manual] Layout is clean, Linear-inspired -- proper spacing, no clutter
-   - [ ] [manual] Mobile: sidebar appears as slide-out drawer
-
-4. [ ] Mock data layer -- TypeScript types + fixture data → v0.1.3
-   Contract:
-   - [ ] [auto] Types file covers all entities. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/types/database.ts contains BookingRestriction
-   - [ ] [auto] Space type enum defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/types/database.ts contains hot_desk
-   - [ ] [auto] Property fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/properties.ts exists
-   - [ ] [auto] Booking fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/bookings.ts exists
-   - [ ] [auto] Barrel export exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts exists
-   - [ ] [auto] Types compile cleanly. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx tsc --noEmit 2>&1 | tail -3 | grep -v "error"
-
-5. [ ] Placeholder pages wired to layout -- all routes navigable → v0.1.4
-   Contract:
-   - [ ] [auto] Employer dashboard page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/dashboard/page.tsx exists
-   - [ ] [auto] Search page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/page.tsx exists
-   - [ ] [auto] Provider dashboard page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(provider)/space-provider/page.tsx exists
-   - [ ] [auto] Admin dashboard page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(admin)/admin/page.tsx exists
-   - [ ] [auto] Placeholder component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/shared/page-placeholder.tsx exists
-   - [ ] [auto] Route group layouts exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(provider)/layout.tsx exists
-   - [ ] [auto] Full build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Every sidebar link navigates to correct placeholder page
-   - [ ] [manual] Active nav highlighting works for each route
-   - [ ] [manual] Role switching shows different nav items and routes
+<!-- No active feature -->
 
 ## Queue
 
 <!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
 
 ## Done
+
+### Project Scaffold & Design System [INFRA] (v0.1.4)
+Plan: `.claude/plans/project-scaffold.md`
+
+1. [x] Next.js project init + Tailwind + shadcn/ui + folder structure → v0.1.0 *(completed 01:28 11/03/26)*
+2. [x] Design system tokens + base component variants → v0.1.1 *(completed 01:35 11/03/26)*
+3. [x] Layout shell -- collapsible sidebar + topbar + role-aware nav → v0.1.2 *(completed 01:40 11/03/26)*
+4. [x] Mock data layer -- TypeScript types + fixture data → v0.1.3 *(completed 01:45 11/03/26)*
+5. [x] Placeholder pages wired to layout -- all routes navigable → v0.1.4 *(completed 01:47 11/03/26)*

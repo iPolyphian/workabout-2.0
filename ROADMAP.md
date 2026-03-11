@@ -23,10 +23,6 @@ Workabout is a two-sided marketplace for flexible workspace booking in the UK --
 
 ## Up Next
 
-### 1. Project Scaffold & Design System [INFRA]
-**Status:** NOT STARTED
-Next.js 15 project init, Tailwind + shadcn/ui setup, design system tokens (colors, typography, spacing from blueprint), layout shell with collapsible sidebar nav, mock data layer with TypeScript types for all 26 entities, placeholder page shells for all routes.
-
 ### 2. Search & Discovery [APP]
 **Status:** NOT STARTED
 Map + list split view (Airbnb-style), filters (space type, date, capacity, amenities, price range), listing cards with thumbnails, SSR for SEO, responsive layout.
@@ -69,4 +65,5 @@ Clerk integration, three account types (Provider/Employer/Individual), role-base
 
 ## Complete
 
-<!-- Completed features go here -->
+### 1. Project Scaffold & Design System [INFRA] -- v0.1.4 (11/03/26)
+Next.js 15 + Tailwind v4 + shadcn/ui, DM Sans/Fira Code fonts, Workabout brand design tokens (light/dark), collapsible sidebar with role-aware nav, topbar, 26-entity TypeScript types with mock fixtures, all placeholder pages navigable across employer/provider/admin routes.
