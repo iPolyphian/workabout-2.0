@@ -16,8 +16,8 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 ## Current Position
 
 - **Active feature:** Project Scaffold & Design System [INFRA] (v0.1.x)
-- **Next step:** Step 2 -- Design system tokens + base component variants (v0.1.1)
-- **Current app version:** v0.1.0
+- **Next step:** Step 3 -- Layout shell (collapsible sidebar + topbar + role-aware nav) (v0.1.2)
+- **Current app version:** v0.1.1
 - **DOE Starter Kit:** v1.27.0
 
 ## Blockers & Edge Cases

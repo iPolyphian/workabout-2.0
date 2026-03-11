@@ -46,15 +46,15 @@ Plan: `.claude/plans/project-scaffold.md`
    - [x] [auto] Route group structure exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx exists
    - [x] [auto] Path aliases configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tsconfig.json contains @/
 
-2. [ ] Design system tokens + base component variants → v0.1.1
+2. [x] Design system tokens + base component variants → v0.1.1 *(completed 01:35 11/03/26)*
    Contract:
-   - [ ] [auto] DM Sans font loaded. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains DM_Sans
-   - [ ] [auto] Design tokens defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --teal
-   - [ ] [auto] Dark mode variables present. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains .dark
-   - [ ] [auto] Tailwind extended with brand colors. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tailwind.config.ts contains teal
-   - [ ] [auto] Button component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/button.tsx exists
-   - [ ] [auto] Badge component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/badge.tsx exists
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] DM Sans font loaded. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains DM_Sans
+   - [x] [auto] Design tokens defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --teal
+   - [x] [auto] Dark mode variables present. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains .dark
+   - [x] [auto] Tailwind brand colors in CSS theme. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --color-teal
+   - [x] [auto] Button component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/button.tsx exists
+   - [x] [auto] Badge component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/badge.tsx exists
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] Fonts render correctly (DM Sans body, Fira Code mono)
    - [ ] [manual] Colors match blueprint -- teal primary (#0d9488), amber secondary (#d97706)
 
