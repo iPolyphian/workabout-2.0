@@ -23,8 +23,8 @@ export function AppShell({ role, children }: AppShellProps) {
         {/* Topbar */}
         <Topbar mobileTrigger={mobileSidebar} />
 
-        {/* Content area — pt-[80px] clears the fixed h-14 topbar (56px) with some breathing room */}
-        <main className="flex-1 px-6 py-6 pt-[80px]">
+        {/* Content area */}
+        <main className="flex-1 px-6 py-6">
           {children}
         </main>
       </div>

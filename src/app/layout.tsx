@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { DM_Sans, Fira_Code } from "next/font/google";
+import { Barlow, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
-const dmSans = DM_Sans({
+const barlow = Barlow({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
 });
 
-const firaCode = Fira_Code({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", dmSans.variable, firaCode.variable)}>
+    <html lang="en" className={cn("font-sans", barlow.variable, inter.variable)}>
       <body className="min-h-screen">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}

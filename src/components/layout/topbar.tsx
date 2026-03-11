@@ -27,7 +27,7 @@ export function Topbar({ mobileTrigger, className }: TopbarProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 right-0 left-0 z-20 flex h-14 items-center border-b border-border bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/80",
+        "sticky top-0 z-20 flex h-14 items-center border-b border-border bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/80",
         className
       )}
     >

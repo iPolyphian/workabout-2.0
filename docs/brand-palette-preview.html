@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workabout 2.0 — Brand Palette</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f1f0ee; color: #1a1a2e; padding: 40px; }
+  h1, h2, h3 { font-family: 'Barlow', sans-serif; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: #64748b; margin-bottom: 48px; }
+  .section { margin-bottom: 48px; }
+  .section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; margin-bottom: 16px; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+  .swatch {
+    width: 120px; border-radius: 12px; overflow: hidden;
+    background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .swatch-color { height: 72px; }
+  .swatch-info { padding: 10px 12px; }
+  .swatch-name { font-size: 12px; font-weight: 600; font-family: 'Barlow', sans-serif; }
+  .swatch-hex { font-size: 11px; color: #64748b; margin-top: 2px; }
+  .swatch-role { font-size: 10px; color: #94a3b8; margin-top: 4px; }
+
+  .font-demo { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 16px; }
+  .font-label { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .font-sample-heading { font-family: 'Barlow', sans-serif; font-size: 32px; font-weight: 700; color: #1a1a2e; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 14px; color: #475569; line-height: 1.6; margin-top: 8px; }
+  .font-weights { display: flex; gap: 24px; margin-top: 16px; }
+  .font-weight { font-size: 14px; color: #1a1a2e; }
+  .font-weight span { display: block; font-size: 10px; color: #94a3b8; margin-top: 2px; }
+
+  .ui-preview { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 20px; border-radius: 8px; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 13px; border: none; cursor: pointer; margin-right: 8px; margin-bottom: 8px; }
+  .btn-primary { background: #312e81; color: white; }
+  .btn-secondary { background: #c4533a; color: white; }
+  .btn-outline { background: transparent; border: 1.5px solid rgba(0,0,0,0.12); color: #1a1a2e; }
+  .btn-ghost { background: #f5f0ec; color: #1a1a2e; }
+  .badge { display: inline-flex; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; font-family: 'Barlow', sans-serif; margin-right: 6px; }
+  .badge-indigo { background: rgba(49,46,129,0.08); color: #312e81; }
+  .badge-terracotta { background: rgba(196,83,58,0.08); color: #c4533a; }
+  .badge-emerald { background: rgba(5,150,105,0.08); color: #059669; }
+  .badge-amber { background: rgba(217,119,6,0.08); color: #d97706; }
+  .badge-blue { background: rgba(2,132,199,0.08); color: #0284c7; }
+  .badge-rose { background: rgba(220,38,38,0.08); color: #dc2626; }
+
+  .sidebar-preview {
+    width: 240px; background: #ffffff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06);
+  }
+  .sidebar-header { padding: 16px 20px; border-bottom: 1px solid rgba(0,0,0,0.06); font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 16px; }
+  .sidebar-nav { padding: 12px 8px; }
+  .sidebar-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; padding: 4px 12px; margin-top: 8px; }
+  .sidebar-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 500; color: #475569; cursor: pointer; border-left: 2px solid transparent; }
+  .sidebar-item:hover { background: #f5f0ec; }
+  .sidebar-item.active { background: rgba(49,46,129,0.06); color: #312e81; border-left-color: #312e81; font-weight: 600; }
+
+  .card-preview { background: #faf9f7; border-radius: 12px; padding: 24px; margin-top: 16px; }
+  .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04); }
+  .card-title { font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .card-text { font-size: 13px; color: #64748b; line-height: 1.5; }
+  .card-meta { display: flex; gap: 8px; margin-top: 12px; align-items: center; }
+  .card-price { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 18px; color: #312e81; }
+  .card-unit { font-size: 12px; color: #94a3b8; }
+
+  .dark-section { background: #0f0e1a; border-radius: 12px; padding: 32px; margin-top: 16px; }
+  .dark-section .swatch { background: #1a1830; }
+  .dark-section .swatch-name { color: #e8e4df; }
+  .dark-section .swatch-hex { color: #94a3b8; }
+
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .comparison { grid-template-columns: 1fr; } }
+  .comparison-card { border-radius: 12px; padding: 24px; }
+  .comparison-old { background: white; border: 1px solid rgba(0,0,0,0.06); opacity: 0.7; }
+  .comparison-new { background: white; box-shadow: 0 2px 8px rgba(49,46,129,0.1); border: 2px solid #312e81; }
+  .comparison-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+  .comparison-old .comparison-label { color: #94a3b8; }
+  .comparison-new .comparison-label { color: #312e81; }
+</style>
+</head>
+<body>
+
+<h1>Workabout 2.0 Brand System</h1>
+<p class="subtitle">Modernized palette — indigo + terracotta + warm surfaces</p>
+
+<!-- PRIMARY PALETTE -->
+<div class="section">
+  <div class="section-title">Core Palette</div>
+  <div class="row">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #312e81;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Indigo</div>
+        <div class="swatch-hex">#312e81</div>
+        <div class="swatch-role">Primary / nav / buttons</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c4533a;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Terracotta</div>
+        <div class="swatch-hex">#c4533a</div>
+        <div class="swatch-role">CTAs / accent / secondary</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8a07a;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Peach</div>
+        <div class="swatch-hex">#e8a07a</div>
+        <div class="swatch-role">Highlight / warm accent</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0d0c0;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Blush</div>
+        <div class="swatch-hex">#f0d0c0</div>
+        <div class="swatch-role">Tint / light background</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #faf9f7;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Warm White</div>
+        <div class="swatch-hex">#faf9f7</div>
+        <div class="swatch-role">Page background</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEMANTIC COLORS -->
+<div class="section">
+  <div class="section-title">Semantic Colors</div>
+  <div class="row">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #059669;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Emerald</div>
+        <div class="swatch-hex">#059669</div>
+        <div class="swatch-role">Success / confirmed</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d97706;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Amber</div>
+        <div class="swatch-hex">#d97706</div>
+        <div class="swatch-role">Warning / pending</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0284c7;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Blue</div>
+        <div class="swatch-hex">#0284c7</div>
+        <div class="swatch-role">Info / links</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #dc2626;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Rose</div>
+        <div class="swatch-hex">#dc2626</div>
+        <div class="swatch-role">Error / destructive</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEUTRALS -->
+<div class="section">
+  <div class="section-title">Neutrals & Surfaces</div>
+  <div class="row">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1a2e;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Foreground</div>
+        <div class="swatch-hex">#1a1a2e</div>
+        <div class="swatch-role">Primary text</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #475569;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Slate</div>
+        <div class="swatch-hex">#475569</div>
+        <div class="swatch-role">Secondary text</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #64748b;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muted</div>
+        <div class="swatch-hex">#64748b</div>
+        <div class="swatch-role">Captions / labels</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f5f0ec;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muted Surface</div>
+        <div class="swatch-hex">#f5f0ec</div>
+        <div class="swatch-role">Hover / accent bg</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ffffff; border: 1px solid rgba(0,0,0,0.08);"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Card</div>
+        <div class="swatch-hex">#ffffff</div>
+        <div class="swatch-role">Card / popover</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FONTS -->
+<div class="section">
+  <div class="section-title">Typography</div>
+  <div class="font-demo">
+    <div class="font-label">Barlow — Headings & UI</div>
+    <div class="font-sample-heading">Find your perfect workspace</div>
+    <div class="font-weights">
+      <div class="font-weight" style="font-family: 'Barlow'; font-weight: 400;">Regular <span>400</span></div>
+      <div class="font-weight" style="font-family: 'Barlow'; font-weight: 500;">Medium <span>500</span></div>
+      <div class="font-weight" style="font-family: 'Barlow'; font-weight: 600;">Semibold <span>600</span></div>
+      <div class="font-weight" style="font-family: 'Barlow'; font-weight: 700;">Bold <span>700</span></div>
+    </div>
+  </div>
+  <div class="font-demo">
+    <div class="font-label">Inter — Body Text</div>
+    <div class="font-sample-body">Workabout connects employers with flexible workspace providers across the UK. Book hot desks, private offices, meeting rooms, and event spaces — all with budget controls and team management built in.</div>
+    <div class="font-weights">
+      <div class="font-weight" style="font-family: 'Inter'; font-weight: 400;">Regular <span>400</span></div>
+      <div class="font-weight" style="font-family: 'Inter'; font-weight: 500;">Medium <span>500</span></div>
+      <div class="font-weight" style="font-family: 'Inter'; font-weight: 600;">Semibold <span>600</span></div>
+      <div class="font-weight" style="font-family: 'Inter'; font-weight: 700;">Bold <span>700</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- UI COMPONENTS -->
+<div class="section">
+  <div class="section-title">UI Components</div>
+  <div class="ui-preview">
+    <div class="font-label">Buttons</div>
+    <div style="margin-bottom: 20px;">
+      <button class="btn btn-primary">Book Space</button>
+      <button class="btn btn-secondary">View Listing</button>
+      <button class="btn btn-outline">Cancel</button>
+      <button class="btn btn-ghost">Settings</button>
+    </div>
+    <div class="font-label">Badges</div>
+    <div style="margin-bottom: 20px;">
+      <span class="badge badge-indigo">Active</span>
+      <span class="badge badge-terracotta">Pending Review</span>
+      <span class="badge badge-emerald">Confirmed</span>
+      <span class="badge badge-amber">Awaiting Payment</span>
+      <span class="badge badge-blue">Info</span>
+      <span class="badge badge-rose">Cancelled</span>
+    </div>
+  </div>
+
+  <!-- Sidebar preview -->
+  <div style="display: flex; gap: 24px; margin-top: 16px; flex-wrap: wrap;">
+    <div class="sidebar-preview">
+      <div class="sidebar-header">Workabout</div>
+      <div class="sidebar-nav">
+        <div class="sidebar-item">&#128269; Search</div>
+        <div class="sidebar-item active">&#9632; Dashboard</div>
+        <div class="sidebar-label">Bookings</div>
+        <div class="sidebar-item">&#128197; My Bookings</div>
+        <div class="sidebar-item">&#128336; History</div>
+        <div class="sidebar-label">Organisation</div>
+        <div class="sidebar-item">&#128101; Employees</div>
+        <div class="sidebar-item">&#128176; Budget</div>
+      </div>
+    </div>
+
+    <!-- Card preview -->
+    <div style="flex: 1; min-width: 300px;">
+      <div class="card-preview">
+        <div class="card">
+          <div class="card-title">The Shoreditch Hub</div>
+          <div class="card-text">Modern coworking space in the heart of Shoreditch with 24/7 access, high-speed WiFi, and on-site barista.</div>
+          <div class="card-meta">
+            <div class="card-price">&pound;35</div>
+            <div class="card-unit">/day</div>
+            <span class="badge badge-emerald" style="margin-left: auto;">Available</span>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 12px;">
+          <div class="card-title">Clerkenwell Works</div>
+          <div class="card-text">Private offices and meeting rooms in a converted Victorian warehouse. Roof terrace with city views.</div>
+          <div class="card-meta">
+            <div class="card-price">&pound;85</div>
+            <div class="card-unit">/day</div>
+            <span class="badge badge-terracotta" style="margin-left: auto;">Under Review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DARK MODE -->
+<div class="section">
+  <div class="section-title">Dark Mode</div>
+  <div class="dark-section">
+    <div class="row">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #818cf8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Indigo Light</div>
+          <div class="swatch-hex">#818cf8</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #e87c62;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Terracotta Light</div>
+          <div class="swatch-hex">#e87c62</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0f0e1a;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Background</div>
+          <div class="swatch-hex">#0f0e1a</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #1a1830;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Card Surface</div>
+          <div class="swatch-hex">#1a1830</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #252340;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Muted</div>
+          <div class="swatch-hex">#252340</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
