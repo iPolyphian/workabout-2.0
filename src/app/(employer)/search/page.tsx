@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { getActiveProperties, filterProperties } from "@/lib/search";
-import { parseSearchFilters } from "@/hooks/use-search-params-state";
+import { parseSearchFilters } from "@/lib/search-params";
 import { SearchLayout } from "@/components/search/search-layout";
 
 interface SearchPageProps {
