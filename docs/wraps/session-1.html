@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 1 — Blueprint to Roadmap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3a;
+    --text: #e0e0e8;
+    --text-dim: #8888a0;
+    --accent: #6c63ff;
+    --accent-glow: rgba(108, 99, 255, 0.15);
+    --green: #4ade80;
+    --green-dim: rgba(74, 222, 128, 0.1);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251, 191, 36, 0.1);
+    --red: #f87171;
+    --cyan: #67e8f9;
+  }
+
+  body.light {
+    --bg: #f0efe9;
+    --surface: #f8f7f3;
+    --surface2: #eae9e3;
+    --border: #d5d4cc;
+    --text: #1a1a2e;
+    --text-dim: #6b6b80;
+    --accent: #5046e5;
+    --accent-glow: rgba(80, 70, 229, 0.08);
+    --green: #16a34a;
+    --green-dim: rgba(22, 163, 74, 0.08);
+    --amber: #d97706;
+    --amber-dim: rgba(217, 119, 6, 0.08);
+    --red: #dc2626;
+    --cyan: #0891b2;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .container { max-width: 800px; margin: 0 auto; }
+
+  .report-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: center;
+    margin: 0 0 1.5rem;
+    position: relative;
+  }
+  .report-label::before, .report-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: var(--border);
+  }
+  .report-label::before { left: 0; }
+  .report-label::after { right: 0; }
+
+  .title-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .session-stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--green);
+    padding: 1rem 0 1.2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 5px;
+  }
+
+  .title-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .project-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.8rem; font-weight: 700;
+    letter-spacing: 0.6em; text-transform: uppercase;
+    color: var(--text); margin-bottom: 0.5rem; position: relative;
+  }
+
+  .episode {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem; color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase; position: relative;
+  }
+
+  .summary { padding: 0; }
+  .summary p { color: var(--text); font-size: 0.95rem; line-height: 1.8; margin-bottom: 0.5rem; }
+  .summary p:last-child { margin-bottom: 0; }
+  .summary-lead { font-size: 0.95rem; color: var(--text); line-height: 1.8; padding-bottom: 1rem; }
+  .breakdown-group { margin-bottom: 0.6rem; margin-top: 0.6rem; }
+  .breakdown-group:last-child { margin-bottom: 0; }
+  .breakdown-heading { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+  .breakdown-bullets { list-style: none; padding: 0; margin: 0; }
+  .breakdown-bullets li { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; padding-left: 1rem; position: relative; }
+  .breakdown-bullets li::before { content: '\2022'; position: absolute; left: 0; color: var(--border); }
+
+  .section { margin-bottom: 2rem; }
+  .section-header { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .section-icon { font-size: 1.1rem; }
+  .section-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); }
+
+  .vibe-inline { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.05em; }
+
+  .commit-list { list-style: none; }
+  .commit-item { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.4rem 0; font-size: 0.85rem; border-bottom: 1px solid rgba(42, 42, 58, 0.5); }
+  .commit-item:last-child { border-bottom: none; }
+  .commit-hash { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; flex-shrink: 0; }
+  .commit-msg { color: var(--text); }
+  .commit-test { color: var(--text-dim); font-style: italic; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 0.5rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; }
+  .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 700; color: var(--text); }
+  .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: 0.2rem; }
+  .stat-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--green); margin-top: 0.2rem; }
+
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 0.35rem; top: 0.5rem; bottom: 0.5rem; width: 2px; background: var(--border); }
+  .timeline-item { position: relative; padding: 0.5rem 0 0.5rem 1rem; display: flex; align-items: baseline; gap: 1rem; }
+  .timeline-item::before { content: ''; position: absolute; left: -1.2rem; top: 0.85rem; width: 8px; height: 8px; border-radius: 50%; background: var(--border); border: 2px solid var(--bg); }
+  .timeline-item.start::before { background: var(--accent); }
+  .timeline-item.major::before { background: var(--green); }
+  .timeline-item.fix::before { background: var(--amber); }
+  .timeline-time { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); flex-shrink: 0; width: 3rem; }
+  .timeline-desc { font-size: 0.85rem; color: var(--text); flex: 1; }
+  .timeline-dur { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); flex-shrink: 0; text-align: right; min-width: 5rem; }
+
+  .insight-item { display: flex; align-items: flex-start; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(42, 42, 58, 0.5); }
+  .insight-item:last-child { border-bottom: none; }
+  .insight-content { flex: 1; }
+  .insight-title { font-size: 0.85rem; font-weight: 500; color: var(--text); line-height: 1.4; }
+  .insight-context { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; margin-top: 0.3rem; }
+  .insight-details { padding: 0.3rem 0 0 0; margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .insight-detail { font-size: 0.8rem; color: var(--text); line-height: 1.5; display: flex; align-items: baseline; gap: 0.6rem; }
+  .insight-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.1rem 0.45rem; border-radius: 3px; flex-shrink: 0; }
+  .insight-label.problem { color: var(--amber); background: var(--amber-dim); }
+  .insight-label.solution { color: var(--green); background: var(--green-dim); }
+  .insight-label.discovery { color: var(--accent); background: var(--accent-glow); }
+  .insight-label.change { color: var(--cyan); background: rgba(103, 232, 249, 0.1); }
+  .learning-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 0.55rem; }
+  .decision-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; margin-top: 0.55rem; }
+
+  .checks { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
+  .check-row { display: flex; align-items: center; gap: 0.8rem; padding: 0.3rem 0; font-size: 0.85rem; }
+  .check-pass { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--green); background: var(--green-dim); padding: 0.15rem 0.5rem; border-radius: 4px; }
+  .check-warn { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--amber); background: var(--amber-dim); padding: 0.15rem 0.5rem; border-radius: 4px; }
+  .check-fail { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--red); background: rgba(248, 113, 113, 0.1); padding: 0.15rem 0.5rem; border-radius: 4px; }
+  .check-label { color: var(--text-dim); }
+  .check-value { color: var(--text); }
+
+  .footer { border-top: 1px solid var(--border); padding-top: 1.5rem; margin-top: 2rem; text-align: center; }
+  .footer-checks { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.8rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--green); }
+  .footer-meta { font-size: 0.8rem; color: var(--text-dim); }
+  .footer-meta strong { color: var(--accent); font-weight: 600; }
+
+  .next-up { background: var(--accent-glow); border: 1px solid rgba(108, 99, 255, 0.3); border-radius: 8px; padding: 1rem 1.5rem; margin-top: 1.5rem; }
+  .next-up-title { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .next-up-desc { font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+
+  .timeline-total { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim); text-align: right; padding-top: 0.5rem; margin-top: 0.5rem; border-top: 1px solid var(--border); }
+  .timeline-legend { display: flex; gap: 1.2rem; margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.7rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .legend-dot.start { background: var(--accent); }
+  .legend-dot.major { background: var(--green); }
+  .legend-dot.fix { background: var(--amber); }
+  .legend-dot.normal { background: var(--border); }
+
+  .commit-group { margin-bottom: 1rem; }
+  .commit-group:last-child { margin-bottom: 0; }
+  .commit-group-header { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; color: var(--accent); margin-bottom: 0.4rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+  .commit-group-count { font-weight: 400; color: var(--text-dim); }
+
+  .today-sessions { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1.2rem; }
+  .today-session-item { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.4rem 0; font-size: 0.85rem; border-bottom: 1px solid rgba(42, 42, 58, 0.5); }
+  .today-session-item:last-child { border-bottom: none; }
+  .today-session-num { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; flex-shrink: 0; width: 2.5rem; }
+  .today-session-dur { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); font-size: 0.75rem; flex-shrink: 0; width: 4rem; }
+  .today-session-summary { color: var(--text); flex: 1; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="report-label">Session Report</div>
+  <div class="title-card">
+    <div class="project-name">WORKABOUT-2.0</div>
+    <div class="episode">Blueprint to Roadmap</div>
+  </div>
+  <div class="session-stats-bar">
+    <span>Session #1</span>
+    <span>Streak: 1 days</span>
+    <span>Lifetime: 1 commits</span>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x1F4CB;</span>
+      <span class="section-title">Summary</span>
+      <span class="vibe-inline">Vibe: 🧹 Housekeeping</span>
+    </div>
+    <div class="summary">
+    <p class="summary-lead">Reviewed the full v1 platform blueprint, chose the tech stack, defined a 10-feature roadmap, and wrote the detailed plan and contracts for Feature 1 (Project Scaffold and Design System).</p>
+    <div class="breakdown-group">
+      <div class="breakdown-heading">Platform Analysis</div>
+      <ul class="breakdown-bullets">
+        <li>Read and summarised 239K-token v1 architecture blueprint</li>
+        <li>Extracted design tokens (colors, fonts, spacing) from blueprint CSS</li>
+        <li>Mapped all 26 database entities and 22+ screen routes</li>
+      </ul>
+    </div>
+    <div class="breakdown-group">
+      <div class="breakdown-heading">Project Planning</div>
+      <ul class="breakdown-bullets">
+        <li>Defined tech stack: Next.js 15 + Supabase + Clerk + Stripe Connect + shadcn/ui</li>
+        <li>Wrote ROADMAP.md with 10 features from scaffold to auth</li>
+        <li>Created 5-step scaffold plan with executable contracts in todo.md</li>
+      </ul>
+    </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x23F1;&#xFE0F;</span>
+      <span class="section-title">Timeline</span>
+    </div>
+    <div class="timeline">
+    <div class="timeline-item start"><span class="timeline-time">23:15</span><span class="timeline-desc">Session started</span><span class="timeline-dur"></span></div>
+    <div class="timeline-item "><span class="timeline-time">23:20</span><span class="timeline-desc">Read STATE.md, todo.md, learnings -- kick-off card</span><span class="timeline-dur">5m (8%)</span></div>
+    <div class="timeline-item "><span class="timeline-time">23:30</span><span class="timeline-desc">Explored v1 workabout project structure</span><span class="timeline-dur">10m (16%)</span></div>
+    <div class="timeline-item major"><span class="timeline-time">23:45</span><span class="timeline-desc">Deep-read 239K-token blueprint HTML</span><span class="timeline-dur">15m (25%)</span></div>
+    <div class="timeline-item "><span class="timeline-time">00:00</span><span class="timeline-desc">Discussed tech stack and build approach</span><span class="timeline-dur">15m (25%)</span></div>
+    <div class="timeline-item major"><span class="timeline-time">00:10</span><span class="timeline-desc">Wrote ROADMAP.md, scaffold plan, todo.md contracts</span><span class="timeline-dur">10m (16%)</span></div>
+    <div class="timeline-item "><span class="timeline-time">00:16</span><span class="timeline-desc">Committed planning work</span><span class="timeline-dur">6m (10%)</span></div>
+    <div class="timeline-total">Total: 1h 1m</div>
+    <div class="timeline-legend">
+      <span class="legend-item"><span class="legend-dot start"></span> Session start</span>
+      <span class="legend-item"><span class="legend-dot major"></span> Major change</span>
+      <span class="legend-item"><span class="legend-dot fix"></span> Fix</span>
+      <span class="legend-item"><span class="legend-dot normal"></span> Normal</span>
+    </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x1F4CA;</span>
+      <span class="section-title">Metrics</span>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">1</div>
+        <div class="stat-label">Commits</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">466</div>
+        <div class="stat-label">Lines Added</div>
+        <div class="stat-sub">-4</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Files Touched</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Steps Done</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">1h 1m</div>
+        <div class="stat-label">Duration</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Agents Spawned</div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x1F4DD;</span>
+      <span class="section-title">Commits</span>
+    </div>
+    <div class="commit-group"><div class="commit-group-header">Project Planning <span class="commit-group-count">(1)</span></div><ul class="commit-list">
+      <li class="commit-item"><span class="commit-hash">7581868</span><span class="commit-msg">Add project roadmap, scaffold plan, and todo contracts</span></li>
+</ul></div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x2696;&#xFE0F;</span>
+      <span class="section-title">Decisions</span>
+    </div>
+    <div class="insight-item"><span class="decision-dot"></span><div class="insight-content"><div class="insight-title">Next.js 15 + shadcn/ui stack</div><div class="insight-details"><div class="insight-detail"><span class="insight-label problem">Problem</span> Needed to choose a tech stack for the v2 rebuild that matches the blueprint recommendations</div><div class="insight-detail"><span class="insight-label solution">Solution</span> Adopted the blueprint suggestion: Next.js 15 App Router, Supabase, Clerk, Stripe Connect, shadcn/ui + Tailwind. Confirmed DOE framework has no conflict with Next.js.</div></div></div></div>
+    <div class="insight-item"><span class="decision-dot"></span><div class="insight-content"><div class="insight-title">Production-grade first draft, not wireframe</div><div class="insight-details"><div class="insight-detail"><span class="insight-label problem">Problem</span> Could build throwaway wireframes or invest in real components from the start</div><div class="insight-detail"><span class="insight-label solution">Solution</span> Build directly in Next.js with full design system -- DM Sans fonts, blueprint color tokens, shadcn/ui variants. Every screen is draft 1 of the real product.</div></div></div></div>
+    <div class="insight-item"><span class="decision-dot"></span><div class="insight-content"><div class="insight-title">10-feature build sequence</div><div class="insight-details"><div class="insight-detail"><span class="insight-label problem">Problem</span> Needed to prioritise which parts of the platform to build first</div><div class="insight-detail"><span class="insight-label solution">Solution</span> Start with scaffold + design system, then follow the core user journey: search, listing, booking. Provider and admin flows follow. Auth last (uses mock role switching until then).</div></div></div></div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x2705;</span>
+      <span class="section-title">Checks</span>
+    </div>
+    <div class="checks">
+    <div class="check-row"><span class="check-pass">PASS 0</span> <span class="check-warn">WARN 1</span> <span class="check-label">Claim Audit</span></div>
+    <div class="check-row"><span class="check-warn">learnings.md -- no front-matter block</span></div>
+    <div class="check-row"><span class="check-warn">v1.27.0*</span> <span class="check-label">DOE Kit</span> <span class="check-value">not synced</span></div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">&#x1F4C5;</span>
+      <span class="section-title">Today&#39;s Sessions</span>
+    </div>
+    <div class="today-sessions">
+    <div class="today-session-item"><span class="today-session-num">#1</span><span class="today-session-dur">1h 1m</span><span class="today-session-summary">Reviewed v1 platform blueprint, defined tech stack and 10-feature roadmap, wrote detailed scaffold plan with contracts.</span></div>
+    </div>
+  </div>
+  <div class="next-up">
+    <div class="next-up-title">Next Up</div>
+    <div class="next-up-desc">Step 1: Next.js 15 project init + Tailwind + shadcn/ui + folder structure (v0.1.0)</div>
+  </div>
+  <div class="footer">
+    <div class="footer-meta">Built with <strong>DOE</strong> &mdash; Directive, Orchestration, Execution</div>
+  </div>
+</div>
+</body>
+</html>
