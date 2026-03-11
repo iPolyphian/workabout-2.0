@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 1 (10/03/26). Reviewed the v1 platform blueprint (workabout-platform-architecture-v3.html), defined the full tech stack (Next.js 15 + Supabase + Clerk + Stripe Connect), wrote the 10-feature ROADMAP.md, and created the detailed plan + todo.md contracts for Feature 1 (Project Scaffold & Design System, 5 steps).
+Session 2 (11/03/26). Completed all 5 steps of Feature 1 (Project Scaffold & Design System): Next.js 15 init, design system tokens, layout shell with collapsible sidebar, 26-entity TypeScript types + fixtures, 21 placeholder pages. Updated brand from blueprint teal/DM Sans to actual Workabout palette (indigo #312e81 + terracotta #c4533a, Barlow + Inter fonts). Fixed topbar overlap bug and hydration error. All auto and manual contracts passed.
