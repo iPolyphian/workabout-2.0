@@ -23,10 +23,6 @@ Workabout is a two-sided marketplace for flexible workspace booking in the UK --
 
 ## Up Next
 
-### 3. Listing Detail [APP]
-**Status:** NOT STARTED
-Photo gallery, property description, amenities grid (27 items), space cards with pricing (full-day/half-day/hourly), reviews section, "Book" CTA linking to booking flow.
-
 ### 4. Booking Flow [APP]
 **Status:** NOT STARTED
 Date/time picker, space selection, guest count, price summary with budget impact, booking modal with confirmation, instant vs manual booking paths.
@@ -60,6 +56,9 @@ Clerk integration, three account types (Provider/Employer/Individual), role-base
 <!-- Future ideas go here -->
 
 ## Complete
+
+### 3. Listing Detail [APP] -- v0.3.5 (11/03/26)
+Photo gallery with lightbox, property header with rating/hours/booking type, amenities grid grouped by category with Lucide icons, space cards with pricing tiers, reviews section with show-more, Book CTA (sticky on mobile), SSR server component, 404 handling. 6 steps, 18 auto contracts passed.
 
 ### 2. Search & Discovery [APP] -- v0.2.5 (11/03/26)
 Split-view search page (list + map), filter bar with URL sync (space type, capacity, price range, amenities), property cards with thumbnails/ratings/badges, mobile list/map toggle, SSR server component, CSS map fallback for dev. 6 steps, 35 auto contracts passed.

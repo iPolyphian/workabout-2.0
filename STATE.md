@@ -15,9 +15,9 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** Listing Detail [APP] v0.3.x
-- **Next step:** Step 1 — Photo fixtures + gallery component
-- **Current app version:** v0.2.5
+- **Active feature:** None -- Feature 3 complete, ready to scope Feature 4
+- **Next step:** Scope and promote Booking Flow [APP] from ROADMAP
+- **Current app version:** v0.3.5
 - **DOE Starter Kit:** v1.27.3
 
 ## Blockers & Edge Cases
@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 3 (11/03/26). Scoped and built all 6 steps of Feature 2 (Search & Discovery): search data layer with amenity fixtures and filter helpers, PropertyCard component, filter bar with URL sync + mobile drawer, map panel with CSS fallback, split-view search page integration, SSR polish and empty states. Fixed server/client boundary error (parseSearchFilters in "use client" file called from server component). All 35 auto contracts passed. Manual testing pending.
+Session 4 (11/03/26). Scoped and built all 6 steps of Feature 3 (Listing Detail): photo fixtures + gallery with lightbox, property header + amenities grid, space cards with pricing tiers, reviews section, page assembly with search navigation, SSR + responsive polish. All 18 auto contracts passed. Manual testing pending.

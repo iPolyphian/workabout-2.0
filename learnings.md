@@ -1,8 +1,8 @@
 ---
 Version: 1.1
 Last updated: 11/03/26
-Applies to: v0.2.5
-Updated by: Added search feature architecture learnings (URL-as-state, negative margins, component scoping)
+Applies to: v0.3.5
+Updated by: Added listing detail learnings (parallel subagent builds, dynamic icon mapping)
 ---
 
 # Project Learnings
@@ -50,6 +50,8 @@ Significant failures (cost >30 min, broke production, or recurred): use structur
 <!-- Reusable patterns for the app. -->
 
 - Search components live in `src/components/search/`, not `ui/` (shadcn primitives) or `shared/` (cross-feature). Feature-scoped directories keep things clean. [retro: search v0.2.5]
+- Listing components in `src/components/listing/`. Same feature-scoping pattern. Page-level server component fetches all data, passes to client `ListingPage` orchestrator which renders sub-components. [retro: listing v0.3.5]
+- For dynamic Lucide icon rendering from string names (e.g. amenity fixtures), use an explicit mapping object rather than dynamic imports. Faster, tree-shakeable, and type-safe. [retro: listing v0.3.1]
 
 ## Common Mistakes
 <!-- Recurring errors to watch for. Failure-driven learnings from Self-Annealing. -->

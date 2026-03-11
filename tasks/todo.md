@@ -35,7 +35,15 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-### Listing Detail [APP] (v0.3.x)
+<!-- No active feature -->
+
+## Queue
+
+<!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
+
+## Done
+
+### Listing Detail [APP] (v0.3.5)
 Plan: `.claude/plans/listing-detail.md`
 
 Full property listing page from search results. Photo gallery, property info, amenities grid, space cards with pricing, reviews, Book CTA. Mock data only.
@@ -98,12 +106,6 @@ Full property listing page from search results. Photo gallery, property info, am
    - [ ] [manual] Tablet layout sensible at 768px
    - [ ] [manual] Empty review state shows gracefully
    - [ ] [manual] Heading hierarchy and keyboard nav logical
-
-## Queue
-
-<!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
-
-## Done
 
 ### Search & Discovery [APP] (v0.2.5)
 Plan: `.claude/plans/search-discovery.md`

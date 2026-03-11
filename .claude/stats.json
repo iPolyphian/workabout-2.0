@@ -1,10 +1,10 @@
 {
   "version": 2,
   "lifetime": {
-    "totalSessions": 3,
-    "totalCommits": 21,
-    "totalLinesAdded": 15094,
-    "totalLinesRemoved": 82,
+    "totalSessions": 4,
+    "totalCommits": 28,
+    "totalLinesAdded": 16405,
+    "totalLinesRemoved": 89,
     "firstSessionDate": "2026-03-11"
   },
   "streak": {
@@ -13,6 +13,18 @@
     "lastSessionDate": "2026-03-11"
   },
   "recentSessions": [
+    {
+      "date": "2026-03-11",
+      "title": "Listing Detail Build",
+      "summary": "Scoped and built all 6 steps of Feature 3 (Listing Detail): photo fixtures + gallery with lightbox, property header + amenities grid, space cards with pricing tiers, reviews section, page assembly with search navigation, SSR + responsive polish. All 18 auto contracts passed.",
+      "commits": 7,
+      "linesAdded": 1311,
+      "linesRemoved": 7,
+      "filesTouched": 18,
+      "stepsCompleted": 6,
+      "sessionDuration": "20m",
+      "streak": 1
+    },
     {
       "date": "2026-03-11",
       "title": "Search & Discovery Build",
