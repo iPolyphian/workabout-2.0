@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 2 (11/03/26). Completed all 5 steps of Feature 1 (Project Scaffold & Design System): Next.js 15 init, design system tokens, layout shell with collapsible sidebar, 26-entity TypeScript types + fixtures, 21 placeholder pages. Updated brand from blueprint teal/DM Sans to actual Workabout palette (indigo #312e81 + terracotta #c4533a, Barlow + Inter fonts). Fixed topbar overlap bug and hydration error. All auto and manual contracts passed.
+Session 3 (11/03/26). Scoped and built all 6 steps of Feature 2 (Search & Discovery): search data layer with amenity fixtures and filter helpers, PropertyCard component, filter bar with URL sync + mobile drawer, map panel with CSS fallback, split-view search page integration, SSR polish and empty states. Fixed server/client boundary error (parseSearchFilters in "use client" file called from server component). All 35 auto contracts passed. Manual testing pending.
