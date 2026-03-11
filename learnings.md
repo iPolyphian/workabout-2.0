@@ -42,3 +42,9 @@ Significant failures (cost >30 min, broke production, or recurred): use structur
 
 ## Common Mistakes
 <!-- Recurring errors to watch for. Failure-driven learnings from Self-Annealing. -->
+
+### Learning: Contract criteria must be marked incrementally, not batched
+**What happened:** During Feature 1, contract criteria were verified in bulk then marked `[x]` in a single batch edit. When moving to Done, the contract blocks were stripped to summary-only lines, losing the audit trail.
+**Root cause:** Optimised for speed over process -- subagented the work, then edited todo.md after the fact instead of marking each criterion as it passed. During retro, manually constructed the Done block instead of moving the existing block.
+**Fix applied:** Restored full contract blocks in Done section.
+**Prevention:** (1) After each `Verify:` pattern passes, immediately edit todo.md to mark that specific criterion `[x]`. (2) When moving a feature to Done, cut-paste the entire block including all Contract lines -- never reconstruct from memory. (3) Subagents don't touch todo.md; the main agent marks criteria after verifying subagent output. [retro: scaffold v0.1.4]
