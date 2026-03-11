@@ -18,7 +18,7 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 - **Active feature:** None -- Feature 2 complete, ready to scope Feature 3
 - **Next step:** Scope and promote Listing Detail [APP] from ROADMAP
 - **Current app version:** v0.2.5
-- **DOE Starter Kit:** v1.27.0
+- **DOE Starter Kit:** v1.27.1
 
 ## Blockers & Edge Cases
 <!-- No active blockers -->
