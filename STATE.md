@@ -15,8 +15,8 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** None -- Feature 2 complete, ready to scope Feature 3
-- **Next step:** Scope and promote Listing Detail [APP] from ROADMAP
+- **Active feature:** Listing Detail [APP] v0.3.x
+- **Next step:** Step 1 — Photo fixtures + gallery component
 - **Current app version:** v0.2.5
 - **DOE Starter Kit:** v1.27.3
 

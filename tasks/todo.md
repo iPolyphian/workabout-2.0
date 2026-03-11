@@ -35,7 +35,69 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-<!-- No active feature -->
+### Listing Detail [APP] (v0.3.x)
+Plan: `.claude/plans/listing-detail.md`
+
+Full property listing page from search results. Photo gallery, property info, amenities grid, space cards with pricing, reviews, Book CTA. Mock data only.
+
+1. [x] Photo fixtures + gallery component → v0.3.0 *(completed 14:21 11/03/26)*
+   Contract:
+   - [x] [auto] Photo fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/photos.ts exists
+   - [x] [auto] Barrel export updated. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts contains photos
+   - [x] [auto] Gallery component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx exists
+   - [x] [auto] Lightbox component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/lightbox.tsx exists
+   - [x] [auto] Gallery uses Next.js Image. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains next/image
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+2. [x] Property info + amenities grid → v0.3.1 *(completed 14:21 11/03/26)*
+   Contract:
+   - [x] [auto] Property header component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/property-header.tsx exists
+   - [x] [auto] Amenities grid component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/amenities-grid.tsx exists
+   - [x] [auto] Property helpers exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/property.ts contains getPropertyById
+   - [x] [auto] Reviews helper exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/property.ts contains getReviewsForProperty
+   - [x] [auto] Amenities grouped by category. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/amenities-grid.tsx contains category
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+3. [x] Space cards with pricing → v0.3.2 *(completed 14:25 11/03/26)*
+   Contract:
+   - [x] [auto] Space card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx exists
+   - [x] [auto] Space list component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-list.tsx exists
+   - [x] [auto] Card shows pricing tiers. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains fullDayPrice
+   - [x] [auto] Card shows capacity. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains capacity
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+4. [x] Reviews section → v0.3.3 *(completed 14:25 11/03/26)*
+   Contract:
+   - [x] [auto] Review card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/review-card.tsx exists
+   - [x] [auto] Reviews section component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/reviews-section.tsx exists
+   - [x] [auto] Shows average rating. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/reviews-section.tsx contains averageRating
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+5. [x] Listing page assembly + search navigation → v0.3.4 *(completed 14:30 11/03/26)*
+   Contract:
+   - [x] [auto] Dynamic route page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx exists
+   - [x] [auto] Listing page component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/listing-page.tsx exists
+   - [x] [auto] Book CTA component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/book-cta.tsx exists
+   - [x] [auto] PropertyCard links to detail. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains /search/
+   - [x] [auto] Page handles 404. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains notFound
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Clicking a search result navigates to the listing detail page
+   - [ ] [manual] Back navigation returns to search with filters preserved
+   - [ ] [manual] Gallery lightbox opens, navigates between photos, closes
+   - [ ] [manual] Amenities show correct icons grouped by category
+   - [ ] [manual] Space cards show all pricing tiers clearly
+   - [ ] [manual] Sticky Book CTA visible on mobile scroll
+
+6. [x] Responsive polish + SSR + empty states → v0.3.5 *(completed 14:33 11/03/26)*
+   Contract:
+   - [x] [auto] Property data in server component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains getPropertyById
+   - [x] [auto] Alt text on gallery images. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains alt
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] SSR working -- property name visible in page source
+   - [ ] [manual] Mobile layout usable at 375px
+   - [ ] [manual] Tablet layout sensible at 768px
+   - [ ] [manual] Empty review state shows gracefully
+   - [ ] [manual] Heading hierarchy and keyboard nav logical
 
 ## Queue
 
