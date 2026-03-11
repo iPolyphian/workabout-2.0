@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { Property, SpaceType } from "@/types/database";
@@ -26,9 +27,10 @@ export function PropertyCard({
   onClick,
 }: PropertyCardProps) {
   return (
-    <div
+    <Link
+      href={`/search/${property.id}`}
       className={[
-        "rounded-lg border bg-card cursor-pointer hover:shadow-md transition-shadow",
+        "block rounded-lg border bg-card cursor-pointer hover:shadow-md transition-shadow",
         isHighlighted
           ? "border-l-[3px] border-l-indigo-600 bg-indigo-50/50 dark:bg-indigo-950/20"
           : "",
@@ -97,6 +99,6 @@ export function PropertyCard({
           )}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
