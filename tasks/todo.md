@@ -49,13 +49,13 @@ Split-view search page (list + map), filters with URL sync, property cards, resp
    - [x] [auto] SearchFilters type exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains SearchFilters
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
 
-2. [ ] Property card component → v0.2.1
+2. [x] Property card component → v0.2.1 *(completed 02:47 11/03/26)*
    Contract:
-   - [ ] [auto] Property card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx exists
-   - [ ] [auto] Format utilities exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/format.ts contains formatPrice
-   - [ ] [auto] Card uses Next.js Image. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains next/image
-   - [ ] [auto] Card accepts highlight prop. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains isHighlighted
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Property card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx exists
+   - [x] [auto] Format utilities exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/format.ts contains formatPrice
+   - [x] [auto] Card uses Next.js Image. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains next/image
+   - [x] [auto] Card accepts highlight prop. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains isHighlighted
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] Card renders with thumbnail, name, city, rating, badges, and price in a compact layout
    - [ ] [manual] Hover state shows subtle visual feedback (elevation or border)
 
