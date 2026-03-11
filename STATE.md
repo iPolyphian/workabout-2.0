@@ -14,10 +14,15 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 -->
 
 ## Current Position
-<!-- What feature/step is in progress. Updated at session start and end. -->
+
+- **Active feature:** Project Scaffold & Design System [INFRA] (v0.1.x)
+- **Next step:** Step 1 -- Next.js project init + Tailwind + shadcn/ui + folder structure (v0.1.0)
+- **Current app version:** v0.0.0 (pre-scaffold)
+- **DOE Starter Kit:** v1.27.0
 
 ## Blockers & Edge Cases
-<!-- Known issues, workarounds, things to watch for. Remove when resolved. -->
+<!-- No active blockers -->
 
 ## Last Session
-<!-- 1-2 sentence summary of what happened last session. Overwritten each session. -->
+
+Session 1 (10/03/26). Reviewed the v1 platform blueprint (workabout-platform-architecture-v3.html), defined the full tech stack (Next.js 15 + Supabase + Clerk + Stripe Connect), wrote the 10-feature ROADMAP.md, and created the detailed plan + todo.md contracts for Feature 1 (Project Scaffold & Design System, 5 steps).

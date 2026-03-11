@@ -35,7 +35,62 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-<!-- No active feature — pick from Queue or ROADMAP.md -->
+### Project Scaffold & Design System [INFRA] (v0.1.x)
+Plan: `.claude/plans/project-scaffold.md`
+
+1. [ ] Next.js project init + Tailwind + shadcn/ui + folder structure → v0.1.0
+   Contract:
+   - [ ] [auto] Next.js builds successfully. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [auto] Tailwind globals exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css exists
+   - [ ] [auto] shadcn/ui configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/components.json exists
+   - [ ] [auto] Route group structure exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx exists
+   - [ ] [auto] Path aliases configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tsconfig.json contains @/
+
+2. [ ] Design system tokens + base component variants → v0.1.1
+   Contract:
+   - [ ] [auto] DM Sans font loaded. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains DM_Sans
+   - [ ] [auto] Design tokens defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --teal
+   - [ ] [auto] Dark mode variables present. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains .dark
+   - [ ] [auto] Tailwind extended with brand colors. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tailwind.config.ts contains teal
+   - [ ] [auto] Button component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/button.tsx exists
+   - [ ] [auto] Badge component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/badge.tsx exists
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Fonts render correctly (DM Sans body, Fira Code mono)
+   - [ ] [manual] Colors match blueprint -- teal primary (#0d9488), amber secondary (#d97706)
+
+3. [ ] Layout shell -- collapsible sidebar + topbar + role-aware nav → v0.1.2
+   Contract:
+   - [ ] [auto] Sidebar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/sidebar.tsx exists
+   - [ ] [auto] Topbar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/topbar.tsx exists
+   - [ ] [auto] App shell component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/app-shell.tsx exists
+   - [ ] [auto] Root layout uses app shell. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains AppShell
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Sidebar collapses/expands with smooth animation
+   - [ ] [manual] Active nav item highlighted with teal accent
+   - [ ] [manual] Layout is clean, Linear-inspired -- proper spacing, no clutter
+   - [ ] [manual] Mobile: sidebar appears as slide-out drawer
+
+4. [ ] Mock data layer -- TypeScript types + fixture data → v0.1.3
+   Contract:
+   - [ ] [auto] Types file covers all entities. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/types/database.ts contains BookingRestriction
+   - [ ] [auto] Space type enum defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/types/database.ts contains hot_desk
+   - [ ] [auto] Property fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/properties.ts exists
+   - [ ] [auto] Booking fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/bookings.ts exists
+   - [ ] [auto] Barrel export exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts exists
+   - [ ] [auto] Types compile cleanly. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx tsc --noEmit 2>&1 | tail -3 | grep -v "error"
+
+5. [ ] Placeholder pages wired to layout -- all routes navigable → v0.1.4
+   Contract:
+   - [ ] [auto] Employer dashboard page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/dashboard/page.tsx exists
+   - [ ] [auto] Search page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/page.tsx exists
+   - [ ] [auto] Provider dashboard page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(provider)/space-provider/page.tsx exists
+   - [ ] [auto] Admin dashboard page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(admin)/admin/page.tsx exists
+   - [ ] [auto] Placeholder component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/shared/page-placeholder.tsx exists
+   - [ ] [auto] Route group layouts exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(provider)/layout.tsx exists
+   - [ ] [auto] Full build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Every sidebar link navigates to correct placeholder page
+   - [ ] [manual] Active nav highlighting works for each route
+   - [ ] [manual] Role switching shows different nav items and routes
 
 ## Queue
 
