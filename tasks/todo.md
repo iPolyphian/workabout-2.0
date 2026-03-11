@@ -40,14 +40,14 @@ Plan: `.claude/plans/search-discovery.md`
 
 Split-view search page (list + map), filters with URL sync, property cards, responsive layout. Mock data only -- client-side filtering over fixtures.
 
-1. [ ] Search data layer -- amenity fixtures + property search helpers → v0.2.0
+1. [x] Search data layer -- amenity fixtures + property search helpers → v0.2.0 *(completed 02:42 11/03/26)*
    Contract:
-   - [ ] [auto] Amenity fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/amenities.ts exists
-   - [ ] [auto] Property-amenity mapping exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/property-amenities.ts exists
-   - [ ] [auto] Barrel export updated. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts contains amenities
-   - [ ] [auto] Search helpers exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains filterProperties
-   - [ ] [auto] SearchFilters type exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains SearchFilters
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Amenity fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/amenities.ts exists
+   - [x] [auto] Property-amenity mapping exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/property-amenities.ts exists
+   - [x] [auto] Barrel export updated. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts contains amenities
+   - [x] [auto] Search helpers exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains filterProperties
+   - [x] [auto] SearchFilters type exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains SearchFilters
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
 
 2. [ ] Property card component → v0.2.1
    Contract:
