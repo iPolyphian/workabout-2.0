@@ -1,8 +1,8 @@
 ---
-Version: 1.0
+Version: 1.1
 Last updated: 11/03/26
-Applies to: v0.1.4
-Updated by: Added front-matter block for documentation governance compliance
+Applies to: v0.2.5
+Updated by: Added search feature architecture learnings (URL-as-state, negative margins, component scoping)
 ---
 
 # Project Learnings
@@ -40,12 +40,16 @@ Significant failures (cost >30 min, broke production, or recurred): use structur
 - Tailwind v4 uses CSS-based config (`@theme inline` in globals.css), not tailwind.config.ts. shadcn/ui v4 uses `base-nova` style (not `new-york`). Contracts referencing tailwind.config.ts need updating for v4 projects. [retro: scaffold v0.1.1]
 - AppShell lives in route group layouts `(employer)/layout.tsx`, not root layout.tsx. Root layout only handles HTML shell, fonts, ThemeProvider. This enables role-specific layout variants. [retro: scaffold v0.1.2]
 - Node 20.2.0 is too old for shadcn v4 and ESLint 9. Need Node >= 20.9.0. nvm installed 20.19.0 automatically. Added .nvmrc to enforce. [retro: scaffold v0.1.0]
+- URL searchParams are the single source of truth for search filter state. Custom `useSearchParamsState` hook wraps Next.js `useSearchParams` + `useRouter`. No external state library needed. Prices in URL are GBP (human-readable), internal state uses pence. [retro: search v0.2.2]
+- Search page uses negative margins (`-mx-6 -my-6`) to override AppShell padding for edge-to-edge map. Avoids modifying the shared AppShell component. [retro: search v0.2.4]
 
 ## Decisions
 <!-- Technical and process decisions. Format: "Decision — reason. [source]" -->
 
 ## UI Patterns
 <!-- Reusable patterns for the app. -->
+
+- Search components live in `src/components/search/`, not `ui/` (shadcn primitives) or `shared/` (cross-feature). Feature-scoped directories keep things clean. [retro: search v0.2.5]
 
 ## Common Mistakes
 <!-- Recurring errors to watch for. Failure-driven learnings from Self-Annealing. -->

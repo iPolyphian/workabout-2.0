@@ -8,8 +8,8 @@ import { useSearchParamsState } from "@/hooks/use-search-params-state";
 import { PropertyCard } from "@/components/search/property-card";
 import { FilterBar } from "@/components/search/filter-bar";
 import { FilterDrawer } from "@/components/search/filter-drawer";
+import { EmptyState } from "@/components/search/empty-state";
 import SearchMap from "@/components/search/search-map";
-import { Button } from "@/components/ui/button";
 import { List, Map as MapIcon } from "lucide-react";
 
 interface SearchLayoutProps {
@@ -92,14 +92,7 @@ export function SearchLayout({ initialProperties, initialFilters }: SearchLayout
               </div>
             ))}
             {properties.length === 0 && (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <p className="text-muted-foreground mb-3">
-                  No workspaces match your filters
-                </p>
-                <Button variant="outline" size="sm" onClick={clearFilters}>
-                  Clear filters
-                </Button>
-              </div>
+              <EmptyState onClearFilters={clearFilters} />
             )}
           </div>
 
@@ -157,14 +150,7 @@ export function SearchLayout({ initialProperties, initialFilters }: SearchLayout
                 </div>
               ))}
               {properties.length === 0 && (
-                <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <p className="text-muted-foreground mb-3">
-                    No workspaces match your filters
-                  </p>
-                  <Button variant="outline" size="sm" onClick={clearFilters}>
-                    Clear filters
-                  </Button>
-                </div>
+                <EmptyState onClearFilters={clearFilters} />
               )}
             </div>
           ) : (

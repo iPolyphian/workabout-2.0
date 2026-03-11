@@ -23,10 +23,6 @@ Workabout is a two-sided marketplace for flexible workspace booking in the UK --
 
 ## Up Next
 
-### 2. Search & Discovery [APP]
-**Status:** NOT STARTED
-Map + list split view (Airbnb-style), filters (space type, date, capacity, amenities, price range), listing cards with thumbnails, SSR for SEO, responsive layout.
-
 ### 3. Listing Detail [APP]
 **Status:** NOT STARTED
 Photo gallery, property description, amenities grid (27 items), space cards with pricing (full-day/half-day/hourly), reviews section, "Book" CTA linking to booking flow.
@@ -64,6 +60,9 @@ Clerk integration, three account types (Provider/Employer/Individual), role-base
 <!-- Future ideas go here -->
 
 ## Complete
+
+### 2. Search & Discovery [APP] -- v0.2.5 (11/03/26)
+Split-view search page (list + map), filter bar with URL sync (space type, capacity, price range, amenities), property cards with thumbnails/ratings/badges, mobile list/map toggle, SSR server component, CSS map fallback for dev. 6 steps, 35 auto contracts passed.
 
 ### 1. Project Scaffold & Design System [INFRA] -- v0.1.4 (11/03/26)
 Next.js 15 + Tailwind v4 + shadcn/ui, DM Sans/Fira Code fonts, Workabout brand design tokens (light/dark), collapsible sidebar with role-aware nav, topbar, 26-entity TypeScript types with mock fixtures, all placeholder pages navigable across employer/provider/admin routes.

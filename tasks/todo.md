@@ -35,7 +35,15 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-### Search & Discovery [APP] (v0.2.x)
+<!-- No active feature -->
+
+## Queue
+
+<!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
+
+## Done
+
+### Search & Discovery [APP] (v0.2.5)
 Plan: `.claude/plans/search-discovery.md`
 
 Split-view search page (list + map), filters with URL sync, property cards, responsive layout. Mock data only -- client-side filtering over fixtures.
@@ -100,23 +108,17 @@ Split-view search page (list + map), filters with URL sync, property cards, resp
    - [ ] [manual] On mobile, List/Map toggle switches between full-width views
    - [ ] [manual] Empty state shows when no properties match filters
 
-6. [ ] SSR, responsive polish, and empty states → v0.2.5
+6. [x] SSR, responsive polish, and empty states → v0.2.5 *(completed 03:15 11/03/26)*
    Contract:
-   - [ ] [auto] Empty state component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/empty-state.tsx exists
-   - [ ] [auto] Unsplash image domain configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/next.config.ts contains unsplash
-   - [ ] [auto] Property cards have alt text. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains alt
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Empty state component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/empty-state.tsx exists
+   - [x] [auto] Unsplash image domain configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/next.config.ts contains unsplash
+   - [x] [auto] Property cards have alt text. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains alt
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] View page source shows property names and prices in HTML (SSR working)
    - [ ] [manual] Mobile layout is usable at 375px width (iPhone SE)
    - [ ] [manual] Tablet layout (768px) shows a sensible split or toggle
    - [ ] [manual] Empty state appears when all filters are set to impossible values
    - [ ] [manual] Tab key navigates through filter controls in logical order
-
-## Queue
-
-<!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
-
-## Done
 
 ### Project Scaffold & Design System [INFRA] (v0.1.4)
 Plan: `.claude/plans/project-scaffold.md`
