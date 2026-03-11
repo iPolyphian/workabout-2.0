@@ -35,7 +35,82 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-<!-- No active feature -->
+### Search & Discovery [APP] (v0.2.x)
+Plan: `.claude/plans/search-discovery.md`
+
+Split-view search page (list + map), filters with URL sync, property cards, responsive layout. Mock data only -- client-side filtering over fixtures.
+
+1. [ ] Search data layer -- amenity fixtures + property search helpers → v0.2.0
+   Contract:
+   - [ ] [auto] Amenity fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/amenities.ts exists
+   - [ ] [auto] Property-amenity mapping exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/property-amenities.ts exists
+   - [ ] [auto] Barrel export updated. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts contains amenities
+   - [ ] [auto] Search helpers exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains filterProperties
+   - [ ] [auto] SearchFilters type exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/search.ts contains SearchFilters
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+2. [ ] Property card component → v0.2.1
+   Contract:
+   - [ ] [auto] Property card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx exists
+   - [ ] [auto] Format utilities exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/format.ts contains formatPrice
+   - [ ] [auto] Card uses Next.js Image. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains next/image
+   - [ ] [auto] Card accepts highlight prop. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains isHighlighted
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Card renders with thumbnail, name, city, rating, badges, and price in a compact layout
+   - [ ] [manual] Hover state shows subtle visual feedback (elevation or border)
+
+3. [ ] Filter bar with URL sync → v0.2.2
+   Contract:
+   - [ ] [auto] Filter bar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/filter-bar.tsx exists
+   - [ ] [auto] Filter drawer exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/filter-drawer.tsx exists
+   - [ ] [auto] Search params hook exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/hooks/use-search-params-state.ts exists
+   - [ ] [auto] Hook reads URL params. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/hooks/use-search-params-state.ts contains useSearchParams
+   - [ ] [auto] Popover component installed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/popover.tsx exists
+   - [ ] [auto] Slider component installed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/slider.tsx exists
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Selecting filters updates the URL bar in real time
+   - [ ] [manual] Pasting a URL with filter params pre-selects the correct filters
+   - [ ] [manual] "Clear all" resets filters and URL
+   - [ ] [manual] On mobile (< 768px), filters appear in a slide-up drawer
+
+4. [ ] Map panel with property pins → v0.2.3
+   Contract:
+   - [ ] [auto] Map component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx exists
+   - [ ] [auto] Map pin component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/map-pin.tsx exists
+   - [ ] [auto] Map fallback exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/map-fallback.tsx exists
+   - [ ] [auto] Map accepts highlight prop. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx contains highlightedPropertyId
+   - [ ] [auto] Dynamic import used. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx contains next/dynamic
+   - [ ] [auto] Google Maps package installed. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && grep -q "react-google-maps" package.json
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Map (or fallback) renders with pins at correct relative positions
+   - [ ] [manual] Pin shows price and uses brand colors
+
+5. [ ] Split-view search page -- list + map + filter integration → v0.2.4
+   Contract:
+   - [ ] [auto] Search page replaced. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/page.tsx contains filterProperties
+   - [ ] [auto] Search layout component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx exists
+   - [ ] [auto] Layout is client component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains use client
+   - [ ] [auto] Mobile toggle exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains List
+   - [ ] [auto] Highlight state managed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains highlightedPropertyId
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Split view shows list on left, map on right on desktop
+   - [ ] [manual] Hovering a card highlights the corresponding map pin
+   - [ ] [manual] Clicking a map pin scrolls to and highlights the corresponding card
+   - [ ] [manual] Filters reduce the visible results in both list and map
+   - [ ] [manual] On mobile, List/Map toggle switches between full-width views
+   - [ ] [manual] Empty state shows when no properties match filters
+
+6. [ ] SSR, responsive polish, and empty states → v0.2.5
+   Contract:
+   - [ ] [auto] Empty state component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/empty-state.tsx exists
+   - [ ] [auto] Unsplash image domain configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/next.config.ts contains unsplash
+   - [ ] [auto] Property cards have alt text. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains alt
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] View page source shows property names and prices in HTML (SSR working)
+   - [ ] [manual] Mobile layout is usable at 375px width (iPhone SE)
+   - [ ] [manual] Tablet layout (768px) shows a sensible split or toggle
+   - [ ] [manual] Empty state appears when all filters are set to impossible values
+   - [ ] [manual] Tab key navigates through filter controls in logical order
 
 ## Queue
 

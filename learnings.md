@@ -1,3 +1,10 @@
+---
+Version: 1.0
+Last updated: 11/03/26
+Applies to: v0.1.4
+Updated by: Added front-matter block for documentation governance compliance
+---
+
 # Project Learnings
 
 Cross-cutting patterns and institutional memory for this project. Check this file at session start. Updated automatically via Self-Annealing (failure recovery) and feature retros (post-completion review).

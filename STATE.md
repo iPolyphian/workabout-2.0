@@ -15,8 +15,8 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** None -- Feature 1 complete, ready to scope Feature 2
-- **Next step:** Scope and promote Search & Discovery [APP] from ROADMAP
+- **Active feature:** Search & Discovery [APP] (v0.2.x)
+- **Next step:** Step 1 -- Search data layer (amenity fixtures + property search helpers)
 - **Current app version:** v0.1.4
 - **DOE Starter Kit:** v1.27.0
 
