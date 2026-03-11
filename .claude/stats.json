@@ -1,30 +1,29 @@
 {
-  "version": 1,
+  "version": 2,
   "lifetime": {
-    "totalSessions": 0,
-    "totalCommits": 0,
-    "totalLinesAdded": 0,
-    "totalLinesRemoved": 0,
-    "totalFilesTouched": 0,
-    "totalStepsCompleted": 0,
-    "totalLearningsLogged": 0,
-    "totalBadgesEarned": 0,
-    "firstSessionDate": null
+    "totalSessions": 1,
+    "totalCommits": 1,
+    "totalLinesAdded": 466,
+    "totalLinesRemoved": 4,
+    "firstSessionDate": "2026-03-11"
   },
   "streak": {
-    "current": 0,
-    "best": 0,
-    "lastSessionDate": null
+    "current": 1,
+    "best": 1,
+    "lastSessionDate": "2026-03-11"
   },
-  "highScores": {
-    "bestSessionScore": 0,
-    "bestSessionDate": null,
-    "bestSessionTitle": null,
-    "bestRawScore": 0,
-    "bestMultiplier": 1.0
-  },
-  "badges": {
-    "allTimeEarned": {}
-  },
-  "recentSessions": []
+  "recentSessions": [
+    {
+      "date": "2026-03-11",
+      "title": "Project Planning",
+      "summary": "Reviewed v1 platform blueprint, defined tech stack and 10-feature roadmap, wrote detailed scaffold plan with contracts.",
+      "commits": 1,
+      "linesAdded": 466,
+      "linesRemoved": 4,
+      "filesTouched": 4,
+      "stepsCompleted": 0,
+      "sessionDuration": "1h 1m",
+      "streak": 1
+    }
+  ]
 }
