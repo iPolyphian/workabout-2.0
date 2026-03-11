@@ -56,15 +56,15 @@ Plan: `.claude/plans/project-scaffold.md`
 
 2. [x] Design system tokens + base component variants → v0.1.1 *(completed 01:35 11/03/26)*
    Contract:
-   - [x] [auto] DM Sans font loaded. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains DM_Sans
-   - [x] [auto] Design tokens defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --teal
+   - [x] [auto] Barlow font loaded. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains Barlow
+   - [x] [auto] Design tokens defined. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --indigo
    - [x] [auto] Dark mode variables present. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains .dark
-   - [x] [auto] Tailwind brand colors in CSS theme. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --color-teal
+   - [x] [auto] Tailwind brand colors in CSS theme. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css contains --color-indigo
    - [x] [auto] Button component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/button.tsx exists
    - [x] [auto] Badge component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/badge.tsx exists
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Fonts render correctly (DM Sans body, Fira Code mono)
-   - [ ] [manual] Colors match blueprint -- teal primary (#0d9488), amber secondary (#d97706)
+   - [x] [manual] Fonts render correctly (Barlow headings, Inter body) *(passed 02:25 11/03/26)*
+   - [x] [manual] Colors match brand -- indigo primary (#312e81), terracotta secondary (#c4533a) *(passed 02:25 11/03/26)*
 
 3. [x] Layout shell -- collapsible sidebar + topbar + role-aware nav → v0.1.2 *(completed 01:40 11/03/26)*
    Contract:
@@ -73,10 +73,10 @@ Plan: `.claude/plans/project-scaffold.md`
    - [x] [auto] App shell component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/app-shell.tsx exists
    - [x] [auto] Route group layout uses app shell. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx contains AppShell
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Sidebar collapses/expands with smooth animation
-   - [ ] [manual] Active nav item highlighted with teal accent
-   - [ ] [manual] Layout is clean, Linear-inspired -- proper spacing, no clutter
-   - [ ] [manual] Mobile: sidebar appears as slide-out drawer
+   - [x] [manual] Sidebar collapses/expands with smooth animation *(passed 02:25 11/03/26)*
+   - [x] [manual] Active nav item highlighted with indigo accent *(passed 02:25 11/03/26)*
+   - [x] [manual] Layout is clean, Linear-inspired -- proper spacing, no clutter *(passed 02:25 11/03/26)*
+   - [x] [manual] Mobile: sidebar appears as slide-out drawer *(passed 02:25 11/03/26)*
 
 4. [x] Mock data layer -- TypeScript types + fixture data → v0.1.3 *(completed 01:45 11/03/26)*
    Contract:
@@ -96,6 +96,6 @@ Plan: `.claude/plans/project-scaffold.md`
    - [x] [auto] Placeholder component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/shared/page-placeholder.tsx exists
    - [x] [auto] Route group layouts exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(provider)/layout.tsx exists
    - [x] [auto] Full build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Every sidebar link navigates to correct placeholder page
-   - [ ] [manual] Active nav highlighting works for each route
-   - [ ] [manual] Role switching shows different nav items and routes
+   - [x] [manual] Every sidebar link navigates to correct placeholder page *(passed 02:25 11/03/26)*
+   - [x] [manual] Active nav highlighting works for each route *(passed 02:25 11/03/26)*
+   - [x] [manual] Role switching shows different nav items and routes *(passed 02:25 11/03/26)*
