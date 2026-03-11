@@ -38,13 +38,13 @@ FORMAT RULES (Claude: follow these when updating this file)
 ### Project Scaffold & Design System [INFRA] (v0.1.x)
 Plan: `.claude/plans/project-scaffold.md`
 
-1. [ ] Next.js project init + Tailwind + shadcn/ui + folder structure → v0.1.0
+1. [x] Next.js project init + Tailwind + shadcn/ui + folder structure → v0.1.0 *(completed 01:28 11/03/26)*
    Contract:
-   - [ ] [auto] Next.js builds successfully. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [auto] Tailwind globals exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css exists
-   - [ ] [auto] shadcn/ui configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/components.json exists
-   - [ ] [auto] Route group structure exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx exists
-   - [ ] [auto] Path aliases configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tsconfig.json contains @/
+   - [x] [auto] Next.js builds successfully. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Tailwind globals exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/globals.css exists
+   - [x] [auto] shadcn/ui configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/components.json exists
+   - [x] [auto] Route group structure exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx exists
+   - [x] [auto] Path aliases configured. Verify: file: /Users/williamporter/Desktop/workabout-2.0/tsconfig.json contains @/
 
 2. [ ] Design system tokens + base component variants → v0.1.1
    Contract:
