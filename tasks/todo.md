@@ -58,13 +58,13 @@ Plan: `.claude/plans/project-scaffold.md`
    - [ ] [manual] Fonts render correctly (DM Sans body, Fira Code mono)
    - [ ] [manual] Colors match blueprint -- teal primary (#0d9488), amber secondary (#d97706)
 
-3. [ ] Layout shell -- collapsible sidebar + topbar + role-aware nav → v0.1.2
+3. [x] Layout shell -- collapsible sidebar + topbar + role-aware nav → v0.1.2 *(completed 01:40 11/03/26)*
    Contract:
-   - [ ] [auto] Sidebar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/sidebar.tsx exists
-   - [ ] [auto] Topbar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/topbar.tsx exists
-   - [ ] [auto] App shell component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/app-shell.tsx exists
-   - [ ] [auto] Root layout uses app shell. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/layout.tsx contains AppShell
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Sidebar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/sidebar.tsx exists
+   - [x] [auto] Topbar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/topbar.tsx exists
+   - [x] [auto] App shell component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/layout/app-shell.tsx exists
+   - [x] [auto] Route group layout uses app shell. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/layout.tsx contains AppShell
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] Sidebar collapses/expands with smooth animation
    - [ ] [manual] Active nav item highlighted with teal accent
    - [ ] [manual] Layout is clean, Linear-inspired -- proper spacing, no clutter
