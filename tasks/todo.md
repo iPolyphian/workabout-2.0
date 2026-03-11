@@ -89,23 +89,23 @@ Full property listing page from search results. Photo gallery, property info, am
    - [x] [auto] PropertyCard links to detail. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains /search/
    - [x] [auto] Page handles 404. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains notFound
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] Clicking a search result navigates to the listing detail page
-   - [ ] [manual] Back navigation returns to search with filters preserved
-   - [ ] [manual] Gallery lightbox opens, navigates between photos, closes
-   - [ ] [manual] Amenities show correct icons grouped by category
-   - [ ] [manual] Space cards show all pricing tiers clearly
-   - [ ] [manual] Sticky Book CTA visible on mobile scroll
+   - [x] [manual] Clicking a search result navigates to the listing detail page *(passed 14:40 11/03/26)*
+   - [x] [manual] Back navigation returns to search with filters preserved *(passed 14:40 11/03/26)*
+   - [x] [manual] Gallery lightbox opens, navigates between photos, closes *(passed 14:40 11/03/26)*
+   - [x] [manual] Amenities show correct icons grouped by category *(passed 14:40 11/03/26)*
+   - [x] [manual] Space cards show all pricing tiers clearly *(passed 14:40 11/03/26)*
+   - [x] [manual] Sticky Book CTA visible on mobile scroll *(passed 14:40 11/03/26)*
 
 6. [x] Responsive polish + SSR + empty states → v0.3.5 *(completed 14:33 11/03/26)*
    Contract:
    - [x] [auto] Property data in server component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains getPropertyById
    - [x] [auto] Alt text on gallery images. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains alt
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [ ] [manual] SSR working -- property name visible in page source
-   - [ ] [manual] Mobile layout usable at 375px
-   - [ ] [manual] Tablet layout sensible at 768px
-   - [ ] [manual] Empty review state shows gracefully
-   - [ ] [manual] Heading hierarchy and keyboard nav logical
+   - [x] [manual] SSR working -- property name visible in page source *(passed 14:40 11/03/26)*
+   - [x] [manual] Mobile layout usable at 375px *(passed 14:40 11/03/26)*
+   - [x] [manual] Tablet layout sensible at 768px *(passed 14:40 11/03/26)*
+   - [x] [manual] Empty review state shows gracefully *(passed 14:40 11/03/26)*
+   - [x] [manual] Heading hierarchy and keyboard nav logical *(passed 14:40 11/03/26)*
 
 ### Search & Discovery [APP] (v0.2.5)
 Plan: `.claude/plans/search-discovery.md`
