@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 4 (11/03/26). Scoped and built all 6 steps of Feature 3 (Listing Detail): photo fixtures + gallery with lightbox, property header + amenities grid, space cards with pricing tiers, reviews section, page assembly with search navigation, SSR + responsive polish. All 18 auto contracts passed. Manual testing pending.
+Session 4 (11/03/26). Scoped and built all 6 steps of Feature 3 (Listing Detail): photo fixtures + gallery with lightbox, property header + amenities grid, space cards with pricing tiers, reviews section, page assembly with search navigation, SSR + responsive polish. All 18 auto + 11 manual contracts passed. Feature fully shipped at v0.3.5.
