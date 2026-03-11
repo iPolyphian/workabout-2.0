@@ -85,14 +85,14 @@ Split-view search page (list + map), filters with URL sync, property cards, resp
    - [ ] [manual] Map (or fallback) renders with pins at correct relative positions
    - [ ] [manual] Pin shows price and uses brand colors
 
-5. [ ] Split-view search page -- list + map + filter integration → v0.2.4
+5. [x] Split-view search page -- list + map + filter integration → v0.2.4 *(completed 03:08 11/03/26)*
    Contract:
-   - [ ] [auto] Search page replaced. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/page.tsx contains filterProperties
-   - [ ] [auto] Search layout component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx exists
-   - [ ] [auto] Layout is client component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains use client
-   - [ ] [auto] Mobile toggle exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains List
-   - [ ] [auto] Highlight state managed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains highlightedPropertyId
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Search page replaced. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/page.tsx contains filterProperties
+   - [x] [auto] Search layout component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx exists
+   - [x] [auto] Layout is client component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains use client
+   - [x] [auto] Mobile toggle exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains List
+   - [x] [auto] Highlight state managed. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-layout.tsx contains highlightedPropertyId
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] Split view shows list on left, map on right on desktop
    - [ ] [manual] Hovering a card highlights the corresponding map pin
    - [ ] [manual] Clicking a map pin scrolls to and highlights the corresponding card
