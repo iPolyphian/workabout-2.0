@@ -73,15 +73,15 @@ Split-view search page (list + map), filters with URL sync, property cards, resp
    - [ ] [manual] "Clear all" resets filters and URL
    - [ ] [manual] On mobile (< 768px), filters appear in a slide-up drawer
 
-4. [ ] Map panel with property pins → v0.2.3
+4. [x] Map panel with property pins → v0.2.3 *(completed 03:01 11/03/26)*
    Contract:
-   - [ ] [auto] Map component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx exists
-   - [ ] [auto] Map pin component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/map-pin.tsx exists
-   - [ ] [auto] Map fallback exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/map-fallback.tsx exists
-   - [ ] [auto] Map accepts highlight prop. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx contains highlightedPropertyId
-   - [ ] [auto] Dynamic import used. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx contains next/dynamic
-   - [ ] [auto] Google Maps package installed. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && grep -q "react-google-maps" package.json
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Map component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx exists
+   - [x] [auto] Map pin component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/map-pin.tsx exists
+   - [x] [auto] Map fallback exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/map-fallback.tsx exists
+   - [x] [auto] Map accepts highlight prop. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx contains highlightedPropertyId
+   - [x] [auto] Dynamic import used. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/search-map.tsx contains next/dynamic
+   - [x] [auto] Google Maps package installed. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && grep -q "react-google-maps" package.json
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
    - [ ] [manual] Map (or fallback) renders with pins at correct relative positions
    - [ ] [manual] Pin shows price and uses brand colors
 
