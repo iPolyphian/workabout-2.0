@@ -35,7 +35,47 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-<!-- No active feature -->
+### DOE HTML Renderer Enhancements [INFRA] (v0.5.x)
+Plan: `.claude/plans/eager-napping-donut.md`
+
+Bug fixes and new features for DOE HTML renderers (eod_html.py, build_hq.py). Fixes overflow bug, layout issues, adds streak heatmap and feature velocity chart.
+
+1. [ ] Fix EOD breakdown bar overflow → v0.5.0
+   Contract:
+   - [ ] [auto] breakdown-bar has max-width constraint. Verify: file: execution/eod_html.py contains max-width
+   - [ ] [auto] breakdown-item has overflow hidden. Verify: file: execution/eod_html.py contains overflow: hidden
+   - [ ] [auto] Script has no syntax errors. Verify: run: python3 execution/eod_html.py --help
+
+2. [ ] HQ: Platform + model stats side-by-side → v0.5.1
+   Contract:
+   - [ ] [auto] Stats split container exists. Verify: file: execution/hq_html.py contains stats-split
+   - [ ] [auto] Stats split uses flexbox. Verify: file: execution/hq_html.py contains display: flex
+   - [ ] [auto] Script has no syntax errors. Verify: run: python3 execution/hq_html.py --help
+   - [ ] [manual] Platform and model stat boxes render side-by-side on desktop
+
+3. [ ] HQ: Move search/filters below Features This Week → v0.5.2
+   Contract:
+   - [ ] [auto] Controls appear after swimlane in content assembly. Verify: run: python3 -c "import ast; ast.parse(open('execution/hq_html.py').read())"
+   - [ ] [manual] Search bar and filter pills appear below the Features This Week swimlane
+
+4. [ ] HQ: Streak heatmap → v0.5.3
+   Contract:
+   - [ ] [auto] Heatmap render function exists. Verify: file: execution/hq_html.py contains render_streak_heatmap
+   - [ ] [auto] SVG grid rendered. Verify: file: execution/hq_html.py contains streak-heatmap
+   - [ ] [auto] Script has no syntax errors. Verify: run: python3 execution/hq_html.py --help
+   - [ ] [manual] Heatmap shows a GitHub-style 52-week grid with intensity coloring
+
+5. [ ] HQ: Feature velocity chart → v0.5.4
+   Contract:
+   - [ ] [auto] Velocity render function exists. Verify: file: execution/hq_html.py contains render_feature_velocity
+   - [ ] [auto] Bar chart rendered. Verify: file: execution/hq_html.py contains velocity-chart
+   - [ ] [auto] Script has no syntax errors. Verify: run: python3 execution/hq_html.py --help
+   - [ ] [manual] Bar chart shows features shipped per month
+
+6. [ ] Sync to starter kit → v0.5.5
+   Contract:
+   - [ ] [auto] Starter kit HQ script updated. Verify: run: diff execution/hq_html.py ~/doe-starter-kit/global-scripts/build_hq.py | head -1 || echo "MATCH"
+   - [ ] [auto] Global script updated. Verify: run: diff execution/hq_html.py ~/.claude/scripts/build_hq.py | head -1 || echo "MATCH"
 
 ## Queue
 
