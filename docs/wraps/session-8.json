@@ -1,0 +1,96 @@
+{
+  "projectName": "WORKABOUT-2.0",
+  "episode": 8,
+  "title": "Awaiting Sign-off Workflow",
+  "summary": "Added a new Awaiting Sign-off section to prevent features with unchecked manual contracts from landing in Done, fixed the workflow timing, and synced everything to the DOE starter kit.",
+  "breakdowns": [
+    {"heading": "Awaiting Sign-off system", "bullets": ["New ## Awaiting Sign-off section in todo.md as intermediate state between code-complete and verified", "Audit check warns if unchecked manual contracts found in Done", "Features move to Awaiting Sign-off immediately when last auto passes"]},
+    {"heading": "Reporting integration", "bullets": ["SIGN-OFF row added to stand-up and sitrep cards", "Collapsible grouped cards in wrap HTML with themed item groups", "Booking Flow (12 items) and Search & Discovery (19 items) moved to new section"]},
+    {"heading": "DOE kit sync + cleanup", "bullets": ["Synced Awaiting Sign-off workflow to kit as v1.30.0", "Fixed timing circular dependency, patched as v1.30.1", "Removed Session Activity heatmap from HQ dashboard"]}
+  ],
+  "vibe": {"emoji": "\ud83e\uddf9", "text": "Housekeeping"},
+  "metrics": {
+    "commits": 8,
+    "linesAdded": 210,
+    "linesRemoved": 188,
+    "filesTouched": 6,
+    "stepsCompleted": 0,
+    "sessionDuration": "5h 9m",
+    "agentsSpawned": 3,
+    "commitLog": [
+      {"hash": "b4c6a1b", "time": "19:13", "message": "Add Awaiting Sign-off section to prevent unchecked manual contracts in Done", "type": "normal"},
+      {"hash": "a9cef6f", "time": "19:16", "message": "Add Awaiting Sign-off section to wrap HTML, stand-up, and sitrep", "type": "normal"},
+      {"hash": "213affc", "time": "19:21", "message": "Collapsible grouped layout for Awaiting Sign-off in wrap HTML", "type": "normal"},
+      {"hash": "5041102", "time": "19:44", "message": "Update DOE Starter Kit version to v1.30.0 in STATE.md", "type": "normal"},
+      {"hash": "bb1890b", "time": "19:52", "message": "Remove Session Activity heatmap from HQ dashboard", "type": "normal"},
+      {"hash": "9454cbb", "time": "22:54", "message": "Fix Awaiting Sign-off timing: move immediately when last auto passes", "type": "fix"},
+      {"hash": "4d777f0", "time": "23:04", "message": "Update DOE Starter Kit version to v1.30.1 in STATE.md", "type": "normal"},
+      {"hash": "f3f86ae", "time": "23:49", "message": "Add session 8 wrap-up", "type": "normal"}
+    ]
+  },
+  "commitGroups": [
+    {"name": "Awaiting Sign-off workflow", "commits": ["b4c6a1b", "a9cef6f", "213affc", "9454cbb"]},
+    {"name": "DOE kit sync", "commits": ["5041102", "4d777f0"]},
+    {"name": "HQ cleanup", "commits": ["bb1890b"]},
+    {"name": "Housekeeping", "commits": ["f3f86ae"]}
+  ],
+  "todaySessions": [
+    {"number": 5, "duration": "37m", "summary": "Scoped and built all 6 steps of Booking Flow: UI primitives, modal, date picker, price summary, confirmation."},
+    {"number": 6, "duration": "15m", "summary": "DOE health check on Windows. Installed Node.js and Python, fixed git hooks for Windows compatibility."},
+    {"number": 7, "duration": "2h 1m", "summary": "Built DOE renderer enhancements: badges, dark/light toggle, EOD bar fix, HQ heatmap, side-by-side stats. Synced to kit v1.29.0."},
+    {"number": 8, "duration": "5h 9m", "summary": "Added Awaiting Sign-off workflow, fixed timing, removed HQ heatmap, synced to DOE kit v1.30.0 + v1.30.1."}
+  ],
+  "timeline": [
+    {"time": "18:40", "desc": "Session started", "dur": "", "type": "start"},
+    {"time": "19:13", "desc": "Awaiting Sign-off section: CLAUDE.md, todo.md, audit check", "dur": "33m", "type": "major"},
+    {"time": "19:16", "desc": "Reporting: wrap HTML, stand-up, sitrep integration", "dur": "3m", "type": "normal"},
+    {"time": "19:21", "desc": "Collapsible grouped cards in wrap HTML", "dur": "5m", "type": "normal"},
+    {"time": "19:44", "desc": "DOE kit sync v1.30.0 complete", "dur": "23m", "type": "major"},
+    {"time": "19:52", "desc": "Removed HQ heatmap", "dur": "8m", "type": "normal"},
+    {"time": "22:54", "desc": "Fixed Awaiting Sign-off timing (circular dependency)", "dur": "3h 2m", "type": "fix"},
+    {"time": "23:04", "desc": "DOE kit sync v1.30.1 complete", "dur": "10m", "type": "normal"},
+    {"time": "23:49", "desc": "Session wrap-up", "dur": "45m", "type": "normal"}
+  ],
+  "decisions": [
+    {"title": "Awaiting Sign-off as intermediate state", "problem": "Features with unchecked manual contracts were landing in Done, bypassing human verification", "solution": "Added ## Awaiting Sign-off section between Queue and Done. Features go there by default at completion. Only move to Done when all manual items are checked."},
+    {"title": "Immediate move on last auto pass", "problem": "Original design had features moving to Awaiting Sign-off at retro/wrap time, creating a circular dependency", "solution": "Changed to move immediately when last step auto criteria pass, in the same commit. No ceremony needed."}
+  ],
+  "learnings": [
+    {"title": "Workflow timing matters", "problem": "The retro step that routes features to Awaiting Sign-off vs Done was described as part of session wrap, but manual checks need to be presented before wrap", "solution": "Made the move happen immediately at feature completion (last auto pass), not at any later ceremony. The retro runs inline with the last step."}
+  ],
+  "checks": {
+    "audit": {"pass": 4, "warn": 0, "fail": 0, "details": []},
+    "doeKit": {"version": "v1.30.1", "synced": true}
+  },
+  "awaitingSignOff": [
+    {
+      "feature": "Booking Flow [APP] (v0.4.5)",
+      "summary": "Multi-step booking modal: space selection, date/time picker, guest count, price summary, instant vs manual booking paths",
+      "manualItems": 12,
+      "groups": [
+        {"name": "Modal & Navigation", "items": ["Clicking Book a Space opens modal with space selection grid", "Clicking per-space Book this space opens modal at date step", "Modal becomes full-screen on mobile", "Back button navigates between steps correctly", "Escape key closes modal"]},
+        {"name": "Date & Time Selection", "items": ["Calendar renders with today highlighted, past dates greyed", "Duration options only show tiers the space supports", "Hourly selection shows available time slots"]},
+        {"name": "Pricing & Confirmation", "items": ["Price breakdown shows correct calculation for each duration type", "Guest count capped at space capacity", "Instant booking shows confirmation, manual shows pending message"]},
+        {"name": "End-to-End", "items": ["Full flow works: select space, pick date, set guests, confirm"]}
+      ]
+    },
+    {
+      "feature": "Search & Discovery [APP] (v0.2.5)",
+      "summary": "Split-view search page with list/map, filters with URL sync, property cards, responsive layout",
+      "manualItems": 19,
+      "groups": [
+        {"name": "Property Cards", "items": ["Card renders with thumbnail, name, city, rating, badges, and price", "Hover state shows subtle visual feedback"]},
+        {"name": "Filters & URL Sync", "items": ["Selecting filters updates the URL bar in real time", "Pasting a URL with filter params pre-selects the correct filters", "Clear all resets filters and URL", "On mobile, filters appear in a slide-up drawer"]},
+        {"name": "Map Integration", "items": ["Map or fallback renders with pins at correct relative positions", "Pin shows price and uses brand colors"]},
+        {"name": "Split View & Interaction", "items": ["Split view shows list on left, map on right on desktop", "Hovering a card highlights the corresponding map pin", "Clicking a map pin scrolls to and highlights the corresponding card", "Filters reduce visible results in both list and map", "On mobile, List/Map toggle switches between full-width views", "Empty state shows when no properties match filters"]},
+        {"name": "Responsive & SSR", "items": ["View page source shows property names and prices in HTML", "Mobile layout is usable at 375px width", "Tablet layout shows a sensible split or toggle", "Empty state appears when all filters are set to impossible values", "Tab key navigates through filter controls in logical order"]}
+      ]
+    }
+  ],
+  "footer": {
+    "session": 8,
+    "streak": 2,
+    "lifetimeCommits": 79
+  },
+  "nextUp": "Scope Employer Dashboard [APP] from ROADMAP and test Booking Flow + Search & Discovery manual items"
+}
