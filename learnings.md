@@ -34,6 +34,8 @@ Significant failures (cost >30 min, broke production, or recurred): use structur
 ## Execution Script Gotchas
 <!-- Bugs, edge cases, and workarounds discovered in execution/ scripts. -->
 
+- Windows Python defaults to cp1252 encoding, not UTF-8. Scripts with Unicode box-drawing chars fail unless `PYTHONIOENCODING=utf-8` is set. The `--json` flag works because JSON output is ASCII-safe. [session 6 env setup]
+
 ## Architecture Decisions
 <!-- Stack choices, trade-offs, and why things are built the way they are. -->
 
