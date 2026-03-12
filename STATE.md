@@ -15,9 +15,9 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** None -- Feature 4 complete, ready to scope Feature 5
-- **Next step:** Scope and promote Employer Dashboard [APP] from ROADMAP
-- **Current app version:** v0.4.5
+- **Active feature:** DOE HTML Renderer Enhancements [INFRA] (v0.5.x) -- all auto criteria pass, awaiting manual visual review
+- **Next step:** User reviews HQ test output, then run feature retro to move to Done
+- **Current app version:** v0.5.5
 - **DOE Starter Kit:** v1.27.3
 
 ## Blockers & Edge Cases
@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 6 (12/03/26). DOE health check and environment setup on new Windows machine. Installed Node.js 24.14.0 via winget, bootstrapped Python 3.14.3 from Microsoft Store. Verified all 5 DOE checks pass (slash commands, CLAUDE.md, git hooks, dev server, starter kit). Audit clean: 3 PASS.
+Session 7 (12/03/26). DOE renderer enhancements: added platform/model/tag tracking + badges to wrap and EOD, fixed EOD breakdown bar overflow, built HQ with side-by-side stats, streak heatmap, feature velocity chart, moved search/filters below Features This Week. Synced to starter kit.
