@@ -35,7 +35,73 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-<!-- No active feature -->
+### Booking Flow [APP] (v0.4.x)
+Plan: `.claude/plans/booking-flow.md`
+
+Multi-step booking modal from listing detail. Space selection, date/time picker, guest count, price summary, instant vs manual booking paths. Mock data only.
+
+1. [x] Booking UI primitives -- dialog, calendar, radio group, select → v0.4.0 *(completed 13:53 12/03/26)*
+   Contract:
+   - [x] [auto] Dialog component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/dialog.tsx exists
+   - [x] [auto] Calendar component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/calendar.tsx exists
+   - [x] [auto] Radio group component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/radio-group.tsx exists
+   - [x] [auto] Select component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/ui/select.tsx exists
+   - [x] [auto] react-day-picker installed. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && grep -q "react-day-picker" package.json
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | grep -q "Compiled successfully"
+
+2. [ ] Booking data helpers → v0.4.1
+   Contract:
+   - [ ] [auto] Booking helpers file exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts exists
+   - [ ] [auto] Price calculation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains calculateBookingPrice
+   - [ ] [auto] Availability check exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains isSpaceAvailable
+   - [ ] [auto] Time slot helper exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains getAvailableTimeSlots
+   - [ ] [auto] Booking creation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains createBooking
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+3. [ ] Booking modal shell + space selector → v0.4.2
+   Contract:
+   - [ ] [auto] Booking modal component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx exists
+   - [ ] [auto] Space selector component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/space-selector.tsx exists
+   - [ ] [auto] Modal manages multi-step state. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx contains step
+   - [ ] [auto] Book CTA wired to modal. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/book-cta.tsx contains BookingModal
+   - [ ] [auto] Space card wired to modal. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains onClick
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Clicking "Book a Space" opens modal with space selection grid
+   - [ ] [manual] Clicking per-space "Book this space" opens modal at date step
+
+4. [ ] Date picker + duration selector → v0.4.3
+   Contract:
+   - [ ] [auto] DateTimePicker component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx exists
+   - [ ] [auto] Duration type selector exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains durationType
+   - [ ] [auto] Time slot picker for hourly. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains TimeSlot
+   - [ ] [auto] Past dates disabled. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains disabled
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Calendar renders with today highlighted, past dates greyed
+   - [ ] [manual] Duration options only show tiers the space supports
+   - [ ] [manual] Hourly selection shows available time slots
+
+5. [ ] Guest count, price summary, and confirmation → v0.4.4
+   Contract:
+   - [ ] [auto] Price summary component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/price-summary.tsx exists
+   - [ ] [auto] Confirmation component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-confirmation.tsx exists
+   - [ ] [auto] Guest count input exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/price-summary.tsx contains guestCount
+   - [ ] [auto] Instant vs manual paths. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-confirmation.tsx contains instant
+   - [ ] [auto] Success state exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-confirmation.tsx contains Confirmed
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Price breakdown shows correct calculation for each duration type
+   - [ ] [manual] Guest count capped at space capacity
+   - [ ] [manual] Instant booking shows confirmation, manual shows pending message
+
+6. [ ] Integration, responsive polish, and edge states → v0.4.5
+   Contract:
+   - [ ] [auto] Back navigation between steps. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx contains onBack
+   - [ ] [auto] Mobile sheet variant. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx contains useMediaQuery
+   - [ ] [auto] No-availability state. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains No availability
+   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [ ] [manual] Modal becomes full-screen on mobile
+   - [ ] [manual] Back button navigates between steps correctly
+   - [ ] [manual] Escape key closes modal
+   - [ ] [manual] Full flow works end-to-end: select space, pick date, set guests, confirm
 
 ## Queue
 

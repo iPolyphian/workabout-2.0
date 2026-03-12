@@ -15,8 +15,8 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** None -- Feature 3 complete, ready to scope Feature 4
-- **Next step:** Scope and promote Booking Flow [APP] from ROADMAP
+- **Active feature:** Booking Flow [APP] v0.4.x
+- **Next step:** Step 1 -- Booking UI primitives (dialog, calendar, radio group, select)
 - **Current app version:** v0.3.5
 - **DOE Starter Kit:** v1.27.3
 
