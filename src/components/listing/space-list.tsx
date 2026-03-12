@@ -3,9 +3,10 @@ import { SpaceCard } from "./space-card";
 
 interface SpaceListProps {
   spaces: Space[];
+  onBookSpace?: (spaceId: string) => void;
 }
 
-export function SpaceList({ spaces }: SpaceListProps) {
+export function SpaceList({ spaces, onBookSpace }: SpaceListProps) {
   return (
     <section>
       <h2 className="font-semibold text-xl font-barlow mb-4">
@@ -20,7 +21,11 @@ export function SpaceList({ spaces }: SpaceListProps) {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {spaces.map((space) => (
-            <SpaceCard key={space.id} space={space} />
+            <SpaceCard
+              key={space.id}
+              space={space}
+              onBook={onBookSpace ? () => onBookSpace(space.id) : undefined}
+            />
           ))}
         </div>
       )}

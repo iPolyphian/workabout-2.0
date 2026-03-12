@@ -1,3 +1,5 @@
+"use client";
+
 import { Users, Calendar, Clock, Timer } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,9 +8,10 @@ import { formatPrice, formatSpaceType } from "@/lib/format";
 
 interface SpaceCardProps {
   space: Space;
+  onBook?: () => void;
 }
 
-export function SpaceCard({ space }: SpaceCardProps) {
+export function SpaceCard({ space, onBook }: SpaceCardProps) {
   return (
     <div className="rounded-lg border bg-card flex flex-col gap-4 p-4">
       {/* Header: name + type badge */}
@@ -69,7 +72,7 @@ export function SpaceCard({ space }: SpaceCardProps) {
       )}
 
       {/* CTA */}
-      <Button variant="outline" className="w-full mt-auto">
+      <Button variant="outline" className="w-full mt-auto" onClick={onBook}>
         Book this space
       </Button>
     </div>

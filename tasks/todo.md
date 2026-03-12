@@ -58,14 +58,14 @@ Multi-step booking modal from listing detail. Space selection, date/time picker,
    - [x] [auto] Booking creation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains createBooking
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | grep -q "Compiled successfully"
 
-3. [ ] Booking modal shell + space selector → v0.4.2
+3. [x] Booking modal shell + space selector → v0.4.2 *(completed 14:02 12/03/26)*
    Contract:
-   - [ ] [auto] Booking modal component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx exists
-   - [ ] [auto] Space selector component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/space-selector.tsx exists
-   - [ ] [auto] Modal manages multi-step state. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx contains step
-   - [ ] [auto] Book CTA wired to modal. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/book-cta.tsx contains BookingModal
-   - [ ] [auto] Space card wired to modal. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains onClick
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Booking modal component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx exists
+   - [x] [auto] Space selector component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/space-selector.tsx exists
+   - [x] [auto] Modal manages multi-step state. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/booking-modal.tsx contains step
+   - [x] [auto] Book CTA wired to modal. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/book-cta.tsx contains onBook
+   - [x] [auto] Space card wired to modal. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains onClick
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | grep -q "Compiled successfully"
    - [ ] [manual] Clicking "Book a Space" opens modal with space selection grid
    - [ ] [manual] Clicking per-space "Book this space" opens modal at date step
 
