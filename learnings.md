@@ -1,8 +1,8 @@
 ---
-Version: 1.1
-Last updated: 11/03/26
-Applies to: v0.3.5
-Updated by: Added listing detail learnings (parallel subagent builds, dynamic icon mapping)
+Version: 1.2
+Last updated: 12/03/26
+Applies to: v0.4.5
+Updated by: Added booking flow learnings
 ---
 
 # Project Learnings
@@ -52,6 +52,8 @@ Significant failures (cost >30 min, broke production, or recurred): use structur
 - Search components live in `src/components/search/`, not `ui/` (shadcn primitives) or `shared/` (cross-feature). Feature-scoped directories keep things clean. [retro: search v0.2.5]
 - Listing components in `src/components/listing/`. Same feature-scoping pattern. Page-level server component fetches all data, passes to client `ListingPage` orchestrator which renders sub-components. [retro: listing v0.3.5]
 - For dynamic Lucide icon rendering from string names (e.g. amenity fixtures), use an explicit mapping object rather than dynamic imports. Faster, tree-shakeable, and type-safe. [retro: listing v0.3.1]
+- Booking components in `src/components/booking/`. Modal-based flows: parent orchestrator (booking-modal) manages step state + data; child components (space-selector, date-time-picker, price-summary, booking-confirmation) are stateless views with callbacks. [retro: booking v0.4.5]
+- Build verification grep pattern: use `grep -q "Compiled successfully"` on full build output, not `tail -5 | grep -q "Compiled"` -- the success line appears early, not at the end. [retro: booking v0.4.0]
 
 ## Common Mistakes
 <!-- Recurring errors to watch for. Failure-driven learnings from Self-Annealing. -->

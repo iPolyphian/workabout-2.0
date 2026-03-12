@@ -35,7 +35,15 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-### Booking Flow [APP] (v0.4.x)
+<!-- No active feature -->
+
+## Queue
+
+<!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
+
+## Done
+
+### Booking Flow [APP] (v0.4.5)
 Plan: `.claude/plans/booking-flow.md`
 
 Multi-step booking modal from listing detail. Space selection, date/time picker, guest count, price summary, instant vs manual booking paths. Mock data only.
@@ -102,12 +110,6 @@ Multi-step booking modal from listing detail. Space selection, date/time picker,
    - [ ] [manual] Back button navigates between steps correctly
    - [ ] [manual] Escape key closes modal
    - [ ] [manual] Full flow works end-to-end: select space, pick date, set guests, confirm
-
-## Queue
-
-<!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
-
-## Done
 
 ### Listing Detail [APP] (v0.3.5)
 Plan: `.claude/plans/listing-detail.md`

@@ -15,9 +15,9 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** Booking Flow [APP] v0.4.x
-- **Next step:** Step 1 -- Booking UI primitives (dialog, calendar, radio group, select)
-- **Current app version:** v0.3.5
+- **Active feature:** None -- Feature 4 complete, ready to scope Feature 5
+- **Next step:** Scope and promote Employer Dashboard [APP] from ROADMAP
+- **Current app version:** v0.4.5
 - **DOE Starter Kit:** v1.27.3
 
 ## Blockers & Edge Cases
@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 4 (11/03/26). Scoped and built all 6 steps of Feature 3 (Listing Detail): photo fixtures + gallery with lightbox, property header + amenities grid, space cards with pricing tiers, reviews section, page assembly with search navigation, SSR + responsive polish. All 18 auto + 11 manual contracts passed. Feature fully shipped at v0.3.5.
+Session 5 (12/03/26). Scoped and built all 6 steps of Feature 4 (Booking Flow): UI primitives, booking helpers, modal shell + space selector, date/time picker, guest count + price summary + confirmation, responsive polish + back nav. All 24 auto contracts passed. Feature shipped at v0.4.5.
