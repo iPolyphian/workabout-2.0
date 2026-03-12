@@ -8,11 +8,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 import { SpaceSelector } from "@/components/booking/space-selector";
 import { DateTimePicker } from "@/components/booking/date-time-picker";
 import { PriceSummary } from "@/components/booking/price-summary";
 import { BookingConfirmation } from "@/components/booking/booking-confirmation";
 import { createBooking, calculateBookingPrice } from "@/lib/booking";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import type { Space, BookingType } from "@/types/database";
 import type { DurationType } from "@/lib/booking";
 
@@ -144,6 +147,17 @@ export function BookingModal({
     });
   }
 
+  const isMobile = useMediaQuery("(max-width: 639px)");
+
+  function onBack() {
+    const idx = visibleSteps.indexOf(step);
+    if (idx > 0) {
+      setStep(visibleSteps[idx - 1]);
+    }
+  }
+
+  const showBack = step !== visibleSteps[0];
+
   // Pre-calculate hours and total price for the confirmation step
   const confirmedHours =
     selectedDurationType === "hourly" && selectedStartTime && selectedEndTime
@@ -161,12 +175,32 @@ export function BookingModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent
+        className={
+          isMobile
+            ? "fixed inset-0 top-0 left-0 translate-x-0 translate-y-0 max-w-none rounded-none h-full w-full overflow-y-auto"
+            : "sm:max-w-lg max-h-[85vh] overflow-y-auto"
+        }
+      >
         <DialogHeader>
-          <DialogTitle>{propertyName}</DialogTitle>
-          <DialogDescription>
-            Step {stepNumber} of {totalSteps} — {STEP_LABELS[step]}
-          </DialogDescription>
+          <div className="flex items-center gap-2">
+            {showBack && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                onClick={onBack}
+                aria-label="Go back"
+              >
+                <ArrowLeft size={16} />
+              </Button>
+            )}
+            <div className="flex-1">
+              <DialogTitle>{propertyName}</DialogTitle>
+              <DialogDescription>
+                Step {stepNumber} of {totalSteps} — {STEP_LABELS[step]}
+              </DialogDescription>
+            </div>
+          </div>
         </DialogHeader>
 
         <div className="mt-2">
