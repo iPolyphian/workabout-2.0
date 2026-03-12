@@ -841,11 +841,6 @@ CSS = r"""  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono
   .platform-row, .model-row { display: flex; align-items: center; gap: 1rem; padding: 0.3rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); }
   .platform-row span, .model-row span { white-space: nowrap; }
 
-  /* ── Streak Heatmap ── */
-  .streak-heatmap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1rem; overflow-x: auto; }
-  .streak-heatmap svg { display: block; }
-  .streak-heatmap .section-label { margin-bottom: 0.8rem; }
-
   /* ── Feature Velocity ── */
 
   /* ── Tag Filter ── */
@@ -951,105 +946,6 @@ def render_model_stats(all_sessions):
         rows.append(f'<div class="model-row">{badge} <span>{stats["sessions"]} sessions</span> <span>avg {avg_commits} commits</span> <span>avg {avg_steps} steps</span></div>')
     inner = "\n".join(rows)
     return f'<div class="model-stats"><div class="section-label">Model Split</div>{inner}</div>'
-
-
-def render_streak_heatmap(all_sessions):
-    """GitHub-style 52-week contribution heatmap using inline SVG."""
-    if not all_sessions:
-        return ""
-
-    # Count sessions per date
-    counts = defaultdict(int)
-    for s in all_sessions:
-        d = s.get("date", "")
-        if d:
-            counts[d] += 1
-
-    today = datetime.now().date()
-    # Find the Saturday that ends the current week (weeks end on Saturday for GitHub-style)
-    # Grid: columns = weeks, rows = Mon(0)..Sun(6)
-    # Most recent week on the right; each column is Mon-Sun
-    # We want 52 columns ending with the column containing today
-
-    # Find the Monday of today's week (Mon=0)
-    days_since_monday = today.weekday()  # Mon=0, Sun=6
-    this_monday = today - timedelta(days=days_since_monday)
-    # Start date is 51 weeks before this Monday
-    start_monday = this_monday - timedelta(weeks=51)
-
-    cell_size = 10
-    gap = 2
-    step = cell_size + gap
-    left_margin = 30  # space for day labels
-    top_margin = 18   # space for month labels
-
-    svg_width = left_margin + 52 * step
-    svg_height = top_margin + 7 * step
-
-    rects = []
-    month_labels = []
-    last_month_label = None
-
-    for week_col in range(52):
-        week_monday = start_monday + timedelta(weeks=week_col)
-        for row in range(7):  # 0=Mon, 6=Sun
-            day = week_monday + timedelta(days=row)
-            if day > today:
-                continue
-            day_str = day.strftime("%Y-%m-%d")
-            count = counts.get(day_str, 0)
-
-            x = left_margin + week_col * step
-            y = top_margin + row * step
-
-            if count == 0:
-                fill = "var(--heatmap-empty, rgba(255,255,255,0.05))"
-            elif count == 1:
-                fill = "rgba(99, 102, 241, 0.4)"
-            else:
-                fill = "var(--accent)"
-
-            tooltip = f"{day_str}: {count} session{'s' if count != 1 else ''}"
-            rects.append(
-                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" '
-                f'rx="2" ry="2" fill="{fill}"><title>{esc(tooltip)}</title></rect>'
-            )
-
-        # Month label: show at first week that starts in a new month
-        first_day_of_week = week_monday
-        month_key = first_day_of_week.strftime("%Y-%m")
-        if month_key != last_month_label and first_day_of_week.day <= 7:
-            mx = left_margin + week_col * step
-            month_name = first_day_of_week.strftime("%b")
-            month_labels.append(
-                f'<text x="{mx}" y="{top_margin - 5}" '
-                f'font-family="\'JetBrains Mono\', monospace" font-size="9" '
-                f'fill="var(--text-dim)">{month_name}</text>'
-            )
-            last_month_label = month_key
-
-    # Day-of-week labels (Mon, Wed, Fri only)
-    day_labels = []
-    for row, label in [(0, "Mon"), (2, "Wed"), (4, "Fri")]:
-        y = top_margin + row * step + cell_size - 1
-        day_labels.append(
-            f'<text x="{left_margin - 4}" y="{y}" text-anchor="end" '
-            f'font-family="\'JetBrains Mono\', monospace" font-size="9" '
-            f'fill="var(--text-dim)">{label}</text>'
-        )
-
-    svg_parts = month_labels + day_labels + rects
-    svg_inner = "\n    ".join(svg_parts)
-
-    return (
-        f'<div class="streak-heatmap">\n'
-        f'  <div class="section-label">Session Activity</div>\n'
-        f'  <svg viewBox="0 0 {svg_width} {svg_height}" width="100%" xmlns="http://www.w3.org/2000/svg">\n'
-        f'    {svg_inner}\n'
-        f'  </svg>\n'
-        f'</div>'
-    )
-
 
 
 def render_portfolio_week_strip(week, projects, today):
@@ -1669,7 +1565,6 @@ def build_portfolio_view(projects, day_map, earliest, latest, weeks, current_wee
         render_portfolio_lifetime(global_stats),
         render_allocation_bar(projects),
         f'<div class="stats-split">{platform_stats_html}{model_stats_html}</div>' if platform_stats_html or model_stats_html else "",
-        render_streak_heatmap(all_sessions),
         f"""  <div class="week-section">
     <div class="week-nav">
       <div class="week-arrows"><div class="week-arrow{pd}" id="p-prev-week">&larr;</div></div>
