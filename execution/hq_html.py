@@ -847,11 +847,6 @@ CSS = r"""  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono
   .streak-heatmap .section-label { margin-bottom: 0.8rem; }
 
   /* ── Feature Velocity ── */
-  .velocity-chart { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1rem; }
-  .velocity-row { display: flex; align-items: center; gap: 0.8rem; padding: 0.3rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
-  .velocity-label { width: 60px; text-align: right; color: var(--text-dim); white-space: nowrap; }
-  .velocity-bar { height: 18px; background: var(--accent); border-radius: 3px; min-width: 4px; transition: width 0.3s; }
-  .velocity-count { color: var(--text-dim); white-space: nowrap; }
 
   /* ── Tag Filter ── */
   .tag-filter-bar { display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap; }
@@ -946,8 +941,8 @@ def render_model_stats(all_sessions):
         by_model[m]["sessions"] += 1
         by_model[m]["commits"] += s.get("commits", 0)
         by_model[m]["steps"] += s.get("stepsCompleted", 0)
-    if len(by_model) <= 1:
-        return ""  # Don't show if only one model (or none)
+    if not by_model:
+        return ""
     rows = []
     for m, stats in sorted(by_model.items(), key=lambda x: -x[1]["sessions"]):
         badge = _model_badge(m)
@@ -1049,65 +1044,12 @@ def render_streak_heatmap(all_sessions):
     return (
         f'<div class="streak-heatmap">\n'
         f'  <div class="section-label">Session Activity</div>\n'
-        f'  <svg width="{svg_width}" height="{svg_height}" xmlns="http://www.w3.org/2000/svg">\n'
+        f'  <svg viewBox="0 0 {svg_width} {svg_height}" width="100%" xmlns="http://www.w3.org/2000/svg">\n'
         f'    {svg_inner}\n'
         f'  </svg>\n'
         f'</div>'
     )
 
-
-def render_feature_velocity(all_sessions):
-    """CSS-based horizontal bar chart showing features/versions shipped per month."""
-    if not all_sessions:
-        return ""
-
-    # Parse version bumps from session summaries
-    month_versions = defaultdict(set)
-    for s in all_sessions:
-        summary = s.get("summary", "")
-        date_str = s.get("date", "")
-        if not date_str or not summary:
-            continue
-        matches = re.findall(r'v(\d+\.\d+(?:\.\d+)?)', summary)
-        if matches:
-            month_key = date_str[:7]  # YYYY-MM
-            for v in matches:
-                month_versions[month_key].add(v)
-
-    if not month_versions:
-        return ""
-
-    # Sort months and take last 6
-    sorted_months = sorted(month_versions.keys())[-6:]
-    if not sorted_months:
-        return ""
-
-    max_count = max(len(month_versions[m]) for m in sorted_months)
-    if max_count == 0:
-        return ""
-
-    rows = []
-    for m in sorted_months:
-        versions = sorted(month_versions[m])
-        count = len(versions)
-        pct = round(count / max_count * 100)
-        version_list = ", ".join(f"v{v}" for v in versions)
-        label = datetime.strptime(m, "%Y-%m").strftime("%b %y")
-        rows.append(
-            f'<div class="velocity-row">'
-            f'<div class="velocity-label">{esc(label)}</div>'
-            f'<div class="velocity-bar" style="width: {pct}%;"></div>'
-            f'<div class="velocity-count">{count} &middot; {esc(version_list)}</div>'
-            f'</div>'
-        )
-
-    inner = "\n".join(rows)
-    return (
-        f'<div class="velocity-chart">\n'
-        f'  <div class="section-label">Feature Velocity</div>\n'
-        f'  {inner}\n'
-        f'</div>'
-    )
 
 
 def render_portfolio_week_strip(week, projects, today):
@@ -1728,7 +1670,6 @@ def build_portfolio_view(projects, day_map, earliest, latest, weeks, current_wee
         render_allocation_bar(projects),
         f'<div class="stats-split">{platform_stats_html}{model_stats_html}</div>' if platform_stats_html or model_stats_html else "",
         render_streak_heatmap(all_sessions),
-        render_feature_velocity(all_sessions),
         f"""  <div class="week-section">
     <div class="week-nav">
       <div class="week-arrows"><div class="week-arrow{pd}" id="p-prev-week">&larr;</div></div>
