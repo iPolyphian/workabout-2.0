@@ -49,14 +49,14 @@ Multi-step booking modal from listing detail. Space selection, date/time picker,
    - [x] [auto] react-day-picker installed. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && grep -q "react-day-picker" package.json
    - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | grep -q "Compiled successfully"
 
-2. [ ] Booking data helpers → v0.4.1
+2. [x] Booking data helpers → v0.4.1 *(completed 13:57 12/03/26)*
    Contract:
-   - [ ] [auto] Booking helpers file exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts exists
-   - [ ] [auto] Price calculation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains calculateBookingPrice
-   - [ ] [auto] Availability check exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains isSpaceAvailable
-   - [ ] [auto] Time slot helper exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains getAvailableTimeSlots
-   - [ ] [auto] Booking creation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains createBooking
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] Booking helpers file exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts exists
+   - [x] [auto] Price calculation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains calculateBookingPrice
+   - [x] [auto] Availability check exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains isSpaceAvailable
+   - [x] [auto] Time slot helper exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains getAvailableTimeSlots
+   - [x] [auto] Booking creation exported. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/booking.ts contains createBooking
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | grep -q "Compiled successfully"
 
 3. [ ] Booking modal shell + space selector → v0.4.2
    Contract:
