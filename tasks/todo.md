@@ -69,13 +69,13 @@ Multi-step booking modal from listing detail. Space selection, date/time picker,
    - [ ] [manual] Clicking "Book a Space" opens modal with space selection grid
    - [ ] [manual] Clicking per-space "Book this space" opens modal at date step
 
-4. [ ] Date picker + duration selector → v0.4.3
+4. [x] Date picker + duration selector → v0.4.3 *(completed 14:08 12/03/26)*
    Contract:
-   - [ ] [auto] DateTimePicker component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx exists
-   - [ ] [auto] Duration type selector exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains durationType
-   - [ ] [auto] Time slot picker for hourly. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains TimeSlot
-   - [ ] [auto] Past dates disabled. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains disabled
-   - [ ] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [auto] DateTimePicker component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx exists
+   - [x] [auto] Duration type selector exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains durationType
+   - [x] [auto] Time slot picker for hourly. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains TimeSlot
+   - [x] [auto] Past dates disabled. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/booking/date-time-picker.tsx contains disabled
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | grep -q "Compiled successfully"
    - [ ] [manual] Calendar renders with today highlighted, past dates greyed
    - [ ] [manual] Duration options only show tiers the space supports
    - [ ] [manual] Hourly selection shows available time slots

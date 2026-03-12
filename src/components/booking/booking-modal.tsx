@@ -9,7 +9,9 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { SpaceSelector } from "@/components/booking/space-selector";
+import { DateTimePicker } from "@/components/booking/date-time-picker";
 import type { Space, BookingType } from "@/types/database";
+import type { DurationType } from "@/lib/booking";
 
 type BookingStep = "select-space" | "date-time" | "details" | "confirmation";
 
@@ -43,6 +45,8 @@ interface BookingModalProps {
 export function BookingModal({
   propertyName,
   spaces,
+  openingTime,
+  closingTime,
   preSelectedSpaceId,
   open,
   onOpenChange,
@@ -55,14 +59,24 @@ export function BookingModal({
   const [selectedSpaceId, setSelectedSpaceId] = useState<string | null>(
     preSelectedSpaceId ?? null
   );
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedDurationType, setSelectedDurationType] = useState<DurationType | null>(null);
+  const [selectedStartTime, setSelectedStartTime] = useState<string | undefined>(undefined);
+  const [selectedEndTime, setSelectedEndTime] = useState<string | undefined>(undefined);
 
   // Reset state whenever the modal opens
   useEffect(() => {
     if (open) {
       setSelectedSpaceId(preSelectedSpaceId ?? null);
       setStep(preSelectedSpaceId ? "date-time" : "select-space");
+      setSelectedDate(null);
+      setSelectedDurationType(null);
+      setSelectedStartTime(undefined);
+      setSelectedEndTime(undefined);
     }
   }, [open, preSelectedSpaceId]);
+
+  const selectedSpace = spaces.find((s) => s.id === selectedSpaceId);
 
   // Steps shown to the user depend on whether space selection is needed
   const visibleSteps = preSelectedSpaceId
@@ -75,6 +89,19 @@ export function BookingModal({
   function handleSpaceSelect(spaceId: string) {
     setSelectedSpaceId(spaceId);
     setStep("date-time");
+  }
+
+  function handleDateTimeContinue(
+    date: string,
+    durationType: DurationType,
+    startTime?: string,
+    endTime?: string
+  ) {
+    setSelectedDate(date);
+    setSelectedDurationType(durationType);
+    setSelectedStartTime(startTime);
+    setSelectedEndTime(endTime);
+    setStep("details");
   }
 
   return (
@@ -92,10 +119,13 @@ export function BookingModal({
             <SpaceSelector spaces={spaces} onSelect={handleSpaceSelect} />
           )}
 
-          {step === "date-time" && (
-            <p className="text-sm text-muted-foreground py-4">
-              Date picker coming in Step 4
-            </p>
+          {step === "date-time" && selectedSpace && (
+            <DateTimePicker
+              space={selectedSpace}
+              openingTime={openingTime}
+              closingTime={closingTime}
+              onContinue={handleDateTimeContinue}
+            />
           )}
 
           {step === "details" && (
