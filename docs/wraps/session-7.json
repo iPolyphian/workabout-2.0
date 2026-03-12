@@ -1,0 +1,38 @@
+{
+  "projectName": "WORKABOUT-2.0",
+  "episode": 7,
+  "title": "DOE Renderer Enhancements",
+  "platform": "win32",
+  "model": "opus",
+  "tag": "BUILD",
+  "summary": "Built platform/model/tag badges, dark/light toggle, and streak heatmap for all DOE renderers, fixed the EOD breakdown bar overflow, then pulled kit v1.28.0 and synced everything back as v1.29.0.",
+  "metrics": {
+    "commits": 14,
+    "linesAdded": 3321,
+    "linesRemoved": 20,
+    "filesTouched": 15,
+    "stepsCompleted": 6,
+    "sessionDuration": "2h 1m",
+    "agentsSpawned": 7
+  },
+  "vibe": {
+    "emoji": "\ud83c\udfed",
+    "text": "Factory floor"
+  },
+  "checks": {
+    "audit": {
+      "pass": 3,
+      "warn": 0,
+      "fail": 0
+    },
+    "doeKit": {
+      "version": "v1.29.0",
+      "synced": true
+    }
+  },
+  "footer": {
+    "session": 7,
+    "streak": 2,
+    "lifetimeCommits": 71
+  }
+}
