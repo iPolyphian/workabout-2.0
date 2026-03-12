@@ -23,7 +23,10 @@
       "filesTouched": 5,
       "stepsCompleted": 0,
       "sessionDuration": "15m",
-      "streak": 2
+      "streak": 2,
+      "platform": "win32",
+      "model": "opus",
+      "tag": "HOUSEKEEPING"
     },
     {
       "date": "2026-03-12",
@@ -35,7 +38,10 @@
       "filesTouched": 24,
       "stepsCompleted": 6,
       "sessionDuration": "37m",
-      "streak": 2
+      "streak": 2,
+      "platform": "darwin",
+      "model": "opus",
+      "tag": "BUILD"
     },
     {
       "date": "2026-03-11",
@@ -47,7 +53,10 @@
       "filesTouched": 21,
       "stepsCompleted": 6,
       "sessionDuration": "26m",
-      "streak": 1
+      "streak": 1,
+      "platform": "darwin",
+      "model": "opus",
+      "tag": "BUILD"
     },
     {
       "date": "2026-03-11",
@@ -59,7 +68,10 @@
       "filesTouched": 29,
       "stepsCompleted": 6,
       "sessionDuration": "37m",
-      "streak": 1
+      "streak": 1,
+      "platform": "darwin",
+      "model": "opus",
+      "tag": "BUILD"
     },
     {
       "date": "2026-03-11",
@@ -71,7 +83,10 @@
       "filesTouched": 66,
       "stepsCompleted": 5,
       "sessionDuration": "1h 16m",
-      "streak": 1
+      "streak": 1,
+      "platform": "darwin",
+      "model": "opus",
+      "tag": "BUILD"
     },
     {
       "date": "2026-03-11",
@@ -83,7 +98,10 @@
       "filesTouched": 4,
       "stepsCompleted": 0,
       "sessionDuration": "1h 1m",
-      "streak": 1
+      "streak": 1,
+      "platform": "darwin",
+      "model": "opus",
+      "tag": "PLAN"
     }
   ]
 }
