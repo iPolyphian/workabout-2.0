@@ -10,6 +10,9 @@ import {
 } from "@/components/ui/dialog";
 import { SpaceSelector } from "@/components/booking/space-selector";
 import { DateTimePicker } from "@/components/booking/date-time-picker";
+import { PriceSummary } from "@/components/booking/price-summary";
+import { BookingConfirmation } from "@/components/booking/booking-confirmation";
+import { createBooking, calculateBookingPrice } from "@/lib/booking";
 import type { Space, BookingType } from "@/types/database";
 import type { DurationType } from "@/lib/booking";
 
@@ -43,10 +46,13 @@ interface BookingModalProps {
 }
 
 export function BookingModal({
+  propertyId,
   propertyName,
   spaces,
+  bookingType,
   openingTime,
   closingTime,
+  cancellationHours,
   preSelectedSpaceId,
   open,
   onOpenChange,
@@ -63,6 +69,7 @@ export function BookingModal({
   const [selectedDurationType, setSelectedDurationType] = useState<DurationType | null>(null);
   const [selectedStartTime, setSelectedStartTime] = useState<string | undefined>(undefined);
   const [selectedEndTime, setSelectedEndTime] = useState<string | undefined>(undefined);
+  const [guestCount, setGuestCount] = useState(1);
 
   // Reset state whenever the modal opens
   useEffect(() => {
@@ -73,6 +80,7 @@ export function BookingModal({
       setSelectedDurationType(null);
       setSelectedStartTime(undefined);
       setSelectedEndTime(undefined);
+      setGuestCount(1);
     }
   }, [open, preSelectedSpaceId]);
 
@@ -104,6 +112,53 @@ export function BookingModal({
     setStep("details");
   }
 
+  function handleDetailsContinue(guests: number) {
+    setGuestCount(guests);
+    setStep("confirmation");
+  }
+
+  function handleConfirm(notes?: string) {
+    if (!selectedSpace || !selectedDate || !selectedDurationType) return;
+
+    let hours: number | undefined;
+    if (selectedDurationType === "hourly" && selectedStartTime && selectedEndTime) {
+      const [sh, sm] = selectedStartTime.split(":").map(Number);
+      const [eh, em] = selectedEndTime.split(":").map(Number);
+      hours = (eh * 60 + em - sh * 60 - sm) / 60;
+    }
+
+    const total = calculateBookingPrice(selectedSpace, selectedDurationType, hours);
+
+    createBooking({
+      userId: "user-001",
+      spaceId: selectedSpace.id,
+      propertyId,
+      date: selectedDate,
+      durationType: selectedDurationType,
+      startTime: selectedStartTime,
+      endTime: selectedEndTime,
+      guestCount,
+      totalPrice: total,
+      bookingType,
+      notes,
+    });
+  }
+
+  // Pre-calculate hours and total price for the confirmation step
+  const confirmedHours =
+    selectedDurationType === "hourly" && selectedStartTime && selectedEndTime
+      ? (() => {
+          const [sh, sm] = selectedStartTime.split(":").map(Number);
+          const [eh, em] = selectedEndTime.split(":").map(Number);
+          return (eh * 60 + em - sh * 60 - sm) / 60;
+        })()
+      : undefined;
+
+  const totalPrice =
+    selectedSpace && selectedDurationType
+      ? calculateBookingPrice(selectedSpace, selectedDurationType, confirmedHours)
+      : 0;
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
@@ -128,16 +183,31 @@ export function BookingModal({
             />
           )}
 
-          {step === "details" && (
-            <p className="text-sm text-muted-foreground py-4">
-              Details coming in Step 5
-            </p>
+          {step === "details" && selectedSpace && selectedDate && selectedDurationType && (
+            <PriceSummary
+              space={selectedSpace}
+              date={selectedDate}
+              durationType={selectedDurationType}
+              startTime={selectedStartTime}
+              endTime={selectedEndTime}
+              onContinue={handleDetailsContinue}
+            />
           )}
 
-          {step === "confirmation" && (
-            <p className="text-sm text-muted-foreground py-4">
-              Confirmation coming in Step 5
-            </p>
+          {step === "confirmation" && selectedSpace && selectedDate && selectedDurationType && (
+            <BookingConfirmation
+              space={selectedSpace}
+              propertyName={propertyName}
+              date={selectedDate}
+              durationType={selectedDurationType}
+              startTime={selectedStartTime}
+              endTime={selectedEndTime}
+              guestCount={guestCount}
+              totalPrice={totalPrice}
+              bookingType={bookingType}
+              cancellationHours={cancellationHours}
+              onConfirm={handleConfirm}
+            />
           )}
         </div>
       </DialogContent>
