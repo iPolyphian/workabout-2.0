@@ -15,14 +15,14 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** DOE HTML Renderer Enhancements [INFRA] (v0.5.x) -- all auto criteria pass, awaiting manual visual review
-- **Next step:** User reviews HQ test output, then run feature retro to move to Done
+- **Active feature:** None -- Feature 5 (DOE Renderer Enhancements) complete
+- **Next step:** Sync DOE kit, then scope Employer Dashboard [APP] from ROADMAP
 - **Current app version:** v0.5.5
-- **DOE Starter Kit:** v1.27.3
+- **DOE Starter Kit:** v1.27.3 (outbound changes pending sync)
 
 ## Blockers & Edge Cases
 <!-- No active blockers -->
 
 ## Last Session
 
-Session 7 (12/03/26). DOE renderer enhancements: added platform/model/tag tracking + badges to wrap and EOD, fixed EOD breakdown bar overflow, built HQ with side-by-side stats, streak heatmap, feature velocity chart, moved search/filters below Features This Week. Synced to starter kit.
+Session 7 (12/03/26). Built DOE renderer enhancements: platform/model/tag tracking with badges, dark/light toggle, EOD breakdown bar fix, HQ streak heatmap, side-by-side stats layout, search/filters repositioned. Removed feature velocity chart per user feedback. All 6 steps complete, user visually approved.

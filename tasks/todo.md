@@ -35,53 +35,25 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 ## Current
 
-### DOE HTML Renderer Enhancements [INFRA] (v0.5.x)
-Plan: `.claude/plans/eager-napping-donut.md`
-
-Bug fixes and new features for DOE HTML renderers (eod_html.py, build_hq.py). Fixes overflow bug, layout issues, adds streak heatmap and feature velocity chart.
-
-1. [x] Fix EOD breakdown bar overflow → v0.5.0 *(completed 17:22 12/03/26)*
-   Contract:
-   - [x] [auto] breakdown-bar has max-width constraint. Verify: file: execution/eod_html.py contains max-width
-   - [x] [auto] breakdown-item has overflow hidden. Verify: file: execution/eod_html.py contains overflow: hidden
-   - [x] [auto] Script has no syntax errors. Verify: run: python3 execution/eod_html.py --help
-
-2. [x] HQ: Platform + model stats side-by-side → v0.5.1 *(completed 17:22 12/03/26)*
-   Contract:
-   - [x] [auto] Stats split container exists. Verify: file: execution/hq_html.py contains stats-split
-   - [x] [auto] Stats split uses flexbox. Verify: file: execution/hq_html.py contains display: flex
-   - [x] [auto] Script has no syntax errors. Verify: run: python3 execution/hq_html.py --help
-   - [ ] [manual] Platform and model stat boxes render side-by-side on desktop
-
-3. [x] HQ: Move search/filters below Features This Week → v0.5.2 *(completed 17:22 12/03/26)*
-   Contract:
-   - [x] [auto] Controls appear after swimlane in content assembly. Verify: run: python3 -c "import ast; ast.parse(open('execution/hq_html.py').read())"
-   - [ ] [manual] Search bar and filter pills appear below the Features This Week swimlane
-
-4. [x] HQ: Streak heatmap → v0.5.3 *(completed 17:22 12/03/26)*
-   Contract:
-   - [x] [auto] Heatmap render function exists. Verify: file: execution/hq_html.py contains render_streak_heatmap
-   - [x] [auto] SVG grid rendered. Verify: file: execution/hq_html.py contains streak-heatmap
-   - [x] [auto] Script has no syntax errors. Verify: run: python3 execution/hq_html.py --help
-   - [ ] [manual] Heatmap shows a GitHub-style 52-week grid with intensity coloring
-
-5. [x] HQ: Feature velocity chart → v0.5.4 *(completed 17:22 12/03/26)*
-   Contract:
-   - [x] [auto] Velocity render function exists. Verify: file: execution/hq_html.py contains render_feature_velocity
-   - [x] [auto] Bar chart rendered. Verify: file: execution/hq_html.py contains velocity-chart
-   - [x] [auto] Script has no syntax errors. Verify: run: python3 execution/hq_html.py --help
-   - [ ] [manual] Bar chart shows features shipped per month
-
-6. [x] Sync to starter kit → v0.5.5 *(completed 17:22 12/03/26)*
-   Contract:
-   - [x] [auto] Starter kit HQ script updated. Verify: run: diff execution/hq_html.py ~/doe-starter-kit/global-scripts/build_hq.py | head -1 || echo "MATCH"
-   - [x] [auto] Global script updated. Verify: run: diff execution/hq_html.py ~/.claude/scripts/build_hq.py | head -1 || echo "MATCH"
+<!-- No active feature -->
 
 ## Queue
 
 <!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
 
 ## Done
+
+### DOE HTML Renderer Enhancements [INFRA] (v0.5.5)
+Plan: `.claude/plans/eager-napping-donut.md`
+
+Bug fixes and new features for DOE HTML renderers (eod_html.py, hq_html.py). Fixed EOD breakdown bar overflow, added platform/model/tag badges and dark/light toggle, HQ streak heatmap, side-by-side stats, search/filters repositioned. Feature velocity chart removed per user feedback.
+
+1. [x] Fix EOD breakdown bar overflow → v0.5.0 *(completed 17:22 12/03/26)*
+2. [x] HQ: Platform + model stats side-by-side → v0.5.1 *(completed 17:22 12/03/26)*
+3. [x] HQ: Move search/filters below Features This Week → v0.5.2 *(completed 17:22 12/03/26)*
+4. [x] HQ: Streak heatmap → v0.5.3 *(completed 17:22 12/03/26)*
+5. [x] HQ: Feature velocity chart → v0.5.4 *(completed 17:22 12/03/26)* — removed per user feedback
+6. [x] Sync to starter kit → v0.5.5 *(completed 17:22 12/03/26)*
 
 ### Booking Flow [APP] (v0.4.5)
 Plan: `.claude/plans/booking-flow.md`

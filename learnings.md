@@ -61,6 +61,7 @@ Significant failures (cost >30 min, broke production, or recurred): use structur
 <!-- Recurring errors to watch for. Failure-driven learnings from Self-Annealing. -->
 
 - Pure utility functions (parseSearchFilters, serializeFilters) must NOT live in `"use client"` files if they're called from server components. Extract to a separate file in `src/lib/` (no directive) and re-export from the hook file for client-side consumers. [retro: search v0.2.5]
+- DOE HTML renderers silently skip sections when JSON keys are wrong (return ""). Before generating wrap/eod/hq output, read the render functions to confirm expected key names (e.g. `sessionTimeline` not `sessions`, top-level `platform`/`model`/`tag`). [retro: doe-renderers v0.5.5]
 
 ### Learning: Contract criteria must be marked incrementally, not batched
 **What happened:** During Feature 1, contract criteria were verified in bulk then marked `[x]` in a single batch edit. When moving to Done, the contract blocks were stripped to summary-only lines, losing the audit trail.
