@@ -1,18 +1,30 @@
 {
   "version": 2,
   "lifetime": {
-    "totalSessions": 4,
-    "totalCommits": 37,
-    "totalLinesAdded": 17741,
-    "totalLinesRemoved": 106,
+    "totalSessions": 5,
+    "totalCommits": 45,
+    "totalLinesAdded": 20119,
+    "totalLinesRemoved": 128,
     "firstSessionDate": "2026-03-11"
   },
   "streak": {
-    "current": 1,
-    "best": 1,
-    "lastSessionDate": "2026-03-11"
+    "current": 2,
+    "best": 2,
+    "lastSessionDate": "2026-03-12"
   },
   "recentSessions": [
+    {
+      "date": "2026-03-12",
+      "title": "Booking Flow Build",
+      "summary": "Scoped and built all 6 steps of Feature 4 (Booking Flow): UI primitives, booking data helpers, modal shell with space selector, date/time picker with availability, guest count and price summary, booking confirmation with instant/manual paths, back navigation, mobile responsive. All 24 auto contracts passed. Feature shipped at v0.4.5.",
+      "commits": 8,
+      "linesAdded": 2378,
+      "linesRemoved": 22,
+      "filesTouched": 24,
+      "stepsCompleted": 6,
+      "sessionDuration": "37m",
+      "streak": 2
+    },
     {
       "date": "2026-03-11",
       "title": "Listing Detail Build",
