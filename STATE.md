@@ -15,8 +15,8 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Current Position
 
-- **Active feature:** None -- Feature 5 (DOE Renderer Enhancements) complete
-- **Next step:** Sync DOE kit, then scope Employer Dashboard [APP] from ROADMAP
+- **Active feature:** None
+- **Next step:** Scope Employer Dashboard [APP] from ROADMAP; test Booking Flow + Search & Discovery manual items in Awaiting Sign-off
 - **Current app version:** v0.5.5
 - **DOE Starter Kit:** v1.30.1
 
@@ -25,4 +25,4 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 
 ## Last Session
 
-Session 7 (12/03/26). Built DOE renderer enhancements: platform/model/tag tracking with badges, dark/light toggle, EOD breakdown bar fix, HQ streak heatmap, side-by-side stats layout, search/filters repositioned. Removed feature velocity chart per user feedback. All 6 steps complete, user visually approved.
+Session 8 (12/03/26). Added Awaiting Sign-off workflow to prevent unchecked manual contracts landing in Done. Updated CLAUDE.md, todo.md, audit_claims.py, wrap_html.py, stand-up, sitrep, and wrap commands. Fixed timing so features move to Awaiting Sign-off immediately when last auto passes. Removed HQ heatmap. Synced to DOE kit as v1.30.0 + v1.30.1.
