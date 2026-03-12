@@ -18,7 +18,7 @@ Keep each section short. Replace stale info, don't accumulate. Max ~30 lines of 
 - **Active feature:** None -- Feature 5 (DOE Renderer Enhancements) complete
 - **Next step:** Sync DOE kit, then scope Employer Dashboard [APP] from ROADMAP
 - **Current app version:** v0.5.5
-- **DOE Starter Kit:** v1.28.0
+- **DOE Starter Kit:** v1.29.0
 
 ## Blockers & Edge Cases
 <!-- No active blockers -->
