@@ -2,7 +2,7 @@
 <!--
 FORMAT RULES (Claude: follow these when updating this file)
 - This file tracks immediate work only. Long-term roadmap lives elsewhere.
-- Sections: ## Current (one active feature), ## Queue (approved, not started), ## Done (completed, keep for audit)
+- Sections: ## Current (one active feature), ## Queue (approved, not started), ## Awaiting Sign-off (code complete, manual contracts pending user test), ## Done (all contracts verified, keep for audit)
 - Each feature gets a heading, short description, and numbered steps
 - Each feature heading includes a type tag: [APP] for changes users see, [INFRA] for tooling/workflow/dev improvements. Example: ### Election History [APP] (v0.9.x). Data work that produces user-visible output is [APP]. Data work that only improves dev workflow is [INFRA].
 - Complex features (3+ steps): link to the full design in .claude/plans/ — e.g. "Plan: .claude/plans/feature-name.md"
@@ -10,7 +10,7 @@ FORMAT RULES (Claude: follow these when updating this file)
 - Each step shows its version tag after the description: "→ v0.X.Y". Step 1 = v0.X.0, step 2 = v0.X.1, etc. Example: 1. [x] First step — description → v0.X.0 *(completed HH:MM DD/MM/YY)*
 - Each step must be scoped to one shippable patch — one commit, one push, one changelog entry. If a step is too big to commit as a single unit, break it down further. If a step is trivial housekeeping, combine it with the previous step.
 - When completing a step: N. [x] Step name → v0.X.Y *(completed HH:MM DD/MM/YY)* — then bump the version everywhere it appears (version badges, config files, filenames), rename any versioned deliverable files to match the new version number (even if their content didn't change — the filename must always match the project version), update the changelog, and commit.
-- When the final step of a feature completes, run the retro in the same commit: (1) Update version references. (2) Update changelog. (3) Update ROADMAP.md: move the feature from Up Next to Complete (with date and one-line summary), update any status tags (IN PROGRESS → COMPLETE), and refresh Suggested Next if it references the completed feature. (4) Update feature heading from (vX.Y.x) to (vX.Y.N). (5) Run brief retro: what worked, what was slow, what to do differently. Add learnings to learnings.md or ~/.claude/CLAUDE.md, tagged with source. If the process recurs, create a directive + trigger. Check the Progressive Disclosure triggers section in CLAUDE.md — are there any recurring patterns from this feature that should have a trigger but don't? (6) Move the whole block to ## Done.
+- When the final step of a feature completes, run the retro in the same commit: (1) Update version references. (2) Update changelog. (3) Update ROADMAP.md: move the feature from Up Next to Complete (with date and one-line summary), update any status tags (IN PROGRESS → COMPLETE), and refresh Suggested Next if it references the completed feature. (4) Update feature heading from (vX.Y.x) to (vX.Y.N). (5) Run brief retro: what worked, what was slow, what to do differently. Add learnings to learnings.md or ~/.claude/CLAUDE.md, tagged with source. If the process recurs, create a directive + trigger. Check the Progressive Disclosure triggers section in CLAUDE.md — are there any recurring patterns from this feature that should have a trigger but don't? (6) If all [manual] contracts are signed off ([x]), move the whole block to ## Done. If any [manual] criteria remain unchecked, move to ## Awaiting Sign-off instead -- features cannot enter ## Done with unchecked [manual] criteria.
 - Keep ## Done trimmed to last 3 completed features. Move older ones to tasks/archive.md with all steps and timestamps preserved. Newest at top of archive.
 - Don't duplicate the product roadmap here. Reference it: "See ROADMAP.md"
 - Progress tracking happens HERE, not in .claude/plans/. Plans are reference docs.
@@ -41,19 +41,9 @@ FORMAT RULES (Claude: follow these when updating this file)
 
 <!-- Approved features waiting to start. Brief description + link to plan if one exists. -->
 
-## Done
+## Awaiting Sign-off
 
-### DOE HTML Renderer Enhancements [INFRA] (v0.5.5)
-Plan: `.claude/plans/eager-napping-donut.md`
-
-Bug fixes and new features for DOE HTML renderers (eod_html.py, hq_html.py). Fixed EOD breakdown bar overflow, added platform/model/tag badges and dark/light toggle, HQ streak heatmap, side-by-side stats, search/filters repositioned. Feature velocity chart removed per user feedback.
-
-1. [x] Fix EOD breakdown bar overflow → v0.5.0 *(completed 17:22 12/03/26)*
-2. [x] HQ: Platform + model stats side-by-side → v0.5.1 *(completed 17:22 12/03/26)*
-3. [x] HQ: Move search/filters below Features This Week → v0.5.2 *(completed 17:22 12/03/26)*
-4. [x] HQ: Streak heatmap → v0.5.3 *(completed 17:22 12/03/26)*
-5. [x] HQ: Feature velocity chart → v0.5.4 *(completed 17:22 12/03/26)* — removed per user feedback
-6. [x] Sync to starter kit → v0.5.5 *(completed 17:22 12/03/26)*
+<!-- Code complete, all [auto] passed. Waiting for user to test [manual] criteria. Features move to Done when all manual items are [x]. -->
 
 ### Booking Flow [APP] (v0.4.5)
 Plan: `.claude/plans/booking-flow.md`
@@ -122,70 +112,6 @@ Multi-step booking modal from listing detail. Space selection, date/time picker,
    - [ ] [manual] Back button navigates between steps correctly
    - [ ] [manual] Escape key closes modal
    - [ ] [manual] Full flow works end-to-end: select space, pick date, set guests, confirm
-
-### Listing Detail [APP] (v0.3.5)
-Plan: `.claude/plans/listing-detail.md`
-
-Full property listing page from search results. Photo gallery, property info, amenities grid, space cards with pricing, reviews, Book CTA. Mock data only.
-
-1. [x] Photo fixtures + gallery component → v0.3.0 *(completed 14:21 11/03/26)*
-   Contract:
-   - [x] [auto] Photo fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/photos.ts exists
-   - [x] [auto] Barrel export updated. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts contains photos
-   - [x] [auto] Gallery component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx exists
-   - [x] [auto] Lightbox component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/lightbox.tsx exists
-   - [x] [auto] Gallery uses Next.js Image. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains next/image
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-
-2. [x] Property info + amenities grid → v0.3.1 *(completed 14:21 11/03/26)*
-   Contract:
-   - [x] [auto] Property header component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/property-header.tsx exists
-   - [x] [auto] Amenities grid component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/amenities-grid.tsx exists
-   - [x] [auto] Property helpers exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/property.ts contains getPropertyById
-   - [x] [auto] Reviews helper exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/property.ts contains getReviewsForProperty
-   - [x] [auto] Amenities grouped by category. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/amenities-grid.tsx contains category
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-
-3. [x] Space cards with pricing → v0.3.2 *(completed 14:25 11/03/26)*
-   Contract:
-   - [x] [auto] Space card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx exists
-   - [x] [auto] Space list component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-list.tsx exists
-   - [x] [auto] Card shows pricing tiers. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains fullDayPrice
-   - [x] [auto] Card shows capacity. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains capacity
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-
-4. [x] Reviews section → v0.3.3 *(completed 14:25 11/03/26)*
-   Contract:
-   - [x] [auto] Review card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/review-card.tsx exists
-   - [x] [auto] Reviews section component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/reviews-section.tsx exists
-   - [x] [auto] Shows average rating. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/reviews-section.tsx contains averageRating
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-
-5. [x] Listing page assembly + search navigation → v0.3.4 *(completed 14:30 11/03/26)*
-   Contract:
-   - [x] [auto] Dynamic route page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx exists
-   - [x] [auto] Listing page component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/listing-page.tsx exists
-   - [x] [auto] Book CTA component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/book-cta.tsx exists
-   - [x] [auto] PropertyCard links to detail. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains /search/
-   - [x] [auto] Page handles 404. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains notFound
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [x] [manual] Clicking a search result navigates to the listing detail page *(passed 14:40 11/03/26)*
-   - [x] [manual] Back navigation returns to search with filters preserved *(passed 14:40 11/03/26)*
-   - [x] [manual] Gallery lightbox opens, navigates between photos, closes *(passed 14:40 11/03/26)*
-   - [x] [manual] Amenities show correct icons grouped by category *(passed 14:40 11/03/26)*
-   - [x] [manual] Space cards show all pricing tiers clearly *(passed 14:40 11/03/26)*
-   - [x] [manual] Sticky Book CTA visible on mobile scroll *(passed 14:40 11/03/26)*
-
-6. [x] Responsive polish + SSR + empty states → v0.3.5 *(completed 14:33 11/03/26)*
-   Contract:
-   - [x] [auto] Property data in server component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains getPropertyById
-   - [x] [auto] Alt text on gallery images. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains alt
-   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
-   - [x] [manual] SSR working -- property name visible in page source *(passed 14:40 11/03/26)*
-   - [x] [manual] Mobile layout usable at 375px *(passed 14:40 11/03/26)*
-   - [x] [manual] Tablet layout sensible at 768px *(passed 14:40 11/03/26)*
-   - [x] [manual] Empty review state shows gracefully *(passed 14:40 11/03/26)*
-   - [x] [manual] Heading hierarchy and keyboard nav logical *(passed 14:40 11/03/26)*
 
 ### Search & Discovery [APP] (v0.2.5)
 Plan: `.claude/plans/search-discovery.md`
@@ -263,6 +189,84 @@ Split-view search page (list + map), filters with URL sync, property cards, resp
    - [ ] [manual] Tablet layout (768px) shows a sensible split or toggle
    - [ ] [manual] Empty state appears when all filters are set to impossible values
    - [ ] [manual] Tab key navigates through filter controls in logical order
+
+## Done
+
+### DOE HTML Renderer Enhancements [INFRA] (v0.5.5)
+Plan: `.claude/plans/eager-napping-donut.md`
+
+Bug fixes and new features for DOE HTML renderers (eod_html.py, hq_html.py). Fixed EOD breakdown bar overflow, added platform/model/tag badges and dark/light toggle, HQ streak heatmap, side-by-side stats, search/filters repositioned. Feature velocity chart removed per user feedback.
+
+1. [x] Fix EOD breakdown bar overflow → v0.5.0 *(completed 17:22 12/03/26)*
+2. [x] HQ: Platform + model stats side-by-side → v0.5.1 *(completed 17:22 12/03/26)*
+3. [x] HQ: Move search/filters below Features This Week → v0.5.2 *(completed 17:22 12/03/26)*
+4. [x] HQ: Streak heatmap → v0.5.3 *(completed 17:22 12/03/26)*
+5. [x] HQ: Feature velocity chart → v0.5.4 *(completed 17:22 12/03/26)* — removed per user feedback
+6. [x] Sync to starter kit → v0.5.5 *(completed 17:22 12/03/26)*
+
+### Listing Detail [APP] (v0.3.5)
+Plan: `.claude/plans/listing-detail.md`
+
+Full property listing page from search results. Photo gallery, property info, amenities grid, space cards with pricing, reviews, Book CTA. Mock data only.
+
+1. [x] Photo fixtures + gallery component → v0.3.0 *(completed 14:21 11/03/26)*
+   Contract:
+   - [x] [auto] Photo fixtures exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/photos.ts exists
+   - [x] [auto] Barrel export updated. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/data/fixtures/index.ts contains photos
+   - [x] [auto] Gallery component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx exists
+   - [x] [auto] Lightbox component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/lightbox.tsx exists
+   - [x] [auto] Gallery uses Next.js Image. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains next/image
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+2. [x] Property info + amenities grid → v0.3.1 *(completed 14:21 11/03/26)*
+   Contract:
+   - [x] [auto] Property header component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/property-header.tsx exists
+   - [x] [auto] Amenities grid component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/amenities-grid.tsx exists
+   - [x] [auto] Property helpers exist. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/property.ts contains getPropertyById
+   - [x] [auto] Reviews helper exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/lib/property.ts contains getReviewsForProperty
+   - [x] [auto] Amenities grouped by category. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/amenities-grid.tsx contains category
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+3. [x] Space cards with pricing → v0.3.2 *(completed 14:25 11/03/26)*
+   Contract:
+   - [x] [auto] Space card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx exists
+   - [x] [auto] Space list component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-list.tsx exists
+   - [x] [auto] Card shows pricing tiers. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains fullDayPrice
+   - [x] [auto] Card shows capacity. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/space-card.tsx contains capacity
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+4. [x] Reviews section → v0.3.3 *(completed 14:25 11/03/26)*
+   Contract:
+   - [x] [auto] Review card component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/review-card.tsx exists
+   - [x] [auto] Reviews section component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/reviews-section.tsx exists
+   - [x] [auto] Shows average rating. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/reviews-section.tsx contains averageRating
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+
+5. [x] Listing page assembly + search navigation → v0.3.4 *(completed 14:30 11/03/26)*
+   Contract:
+   - [x] [auto] Dynamic route page exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx exists
+   - [x] [auto] Listing page component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/listing-page.tsx exists
+   - [x] [auto] Book CTA component exists. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/book-cta.tsx exists
+   - [x] [auto] PropertyCard links to detail. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/search/property-card.tsx contains /search/
+   - [x] [auto] Page handles 404. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains notFound
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [manual] Clicking a search result navigates to the listing detail page *(passed 14:40 11/03/26)*
+   - [x] [manual] Back navigation returns to search with filters preserved *(passed 14:40 11/03/26)*
+   - [x] [manual] Gallery lightbox opens, navigates between photos, closes *(passed 14:40 11/03/26)*
+   - [x] [manual] Amenities show correct icons grouped by category *(passed 14:40 11/03/26)*
+   - [x] [manual] Space cards show all pricing tiers clearly *(passed 14:40 11/03/26)*
+   - [x] [manual] Sticky Book CTA visible on mobile scroll *(passed 14:40 11/03/26)*
+
+6. [x] Responsive polish + SSR + empty states → v0.3.5 *(completed 14:33 11/03/26)*
+   Contract:
+   - [x] [auto] Property data in server component. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/app/(employer)/search/[propertyId]/page.tsx contains getPropertyById
+   - [x] [auto] Alt text on gallery images. Verify: file: /Users/williamporter/Desktop/workabout-2.0/src/components/listing/photo-gallery.tsx contains alt
+   - [x] [auto] Build succeeds. Verify: run: cd /Users/williamporter/Desktop/workabout-2.0 && npx next build 2>&1 | tail -5 | grep -q "Compiled"
+   - [x] [manual] SSR working -- property name visible in page source *(passed 14:40 11/03/26)*
+   - [x] [manual] Mobile layout usable at 375px *(passed 14:40 11/03/26)*
+   - [x] [manual] Tablet layout sensible at 768px *(passed 14:40 11/03/26)*
+   - [x] [manual] Empty review state shows gracefully *(passed 14:40 11/03/26)*
+   - [x] [manual] Heading hierarchy and keyboard nav logical *(passed 14:40 11/03/26)*
 
 ### Project Scaffold & Design System [INFRA] (v0.1.4)
 Plan: `.claude/plans/project-scaffold.md`
