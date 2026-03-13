@@ -47,6 +47,11 @@ Admin dashboard (GMV, take rate, active bookings), provider onboarding pipeline 
 **Status:** NOT STARTED
 Clerk integration, three account types (Provider/Employer/Individual), role-based navigation and views, org hierarchy (Admin > Manager > Employee), signup flow with email verification.
 
+### 11. Employer HQ [APP]
+**Status:** NOT STARTED
+**Depends on:** Property Wizard (#8)
+Employer lists their own office as a bookable internal workspace. Reuses the Property Wizard with `internal_only: true` + `organisation_id`. Visible only to org employees, hidden from public search. Lets employers manage who is in the office on any given day. Paid module (£5/employee/month in production). Nav item added in Employer Dashboard (#5).
+
 ## Ideas
 
 <!-- Future ideas go here -->
