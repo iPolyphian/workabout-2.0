@@ -1,0 +1,78 @@
+{
+  "projectName": "WORKABOUT-2.0",
+  "episode": 9,
+  "title": "Employer Dashboard Scoping",
+  "summary": "Scoped the Employer Dashboard feature and discovered the HQ concept from the platform blueprint, adding it as a new roadmap item.",
+  "breakdowns": [
+    {"heading": "Employer Dashboard Plan", "bullets": ["Wrote 6-step plan (v0.6.x): data layer, overview, my bookings, employee table, employee actions, booking history", "Created .claude/plans/employer-dashboard.md with component architecture and edge cases"]},
+    {"heading": "HQ Feature Discovery", "bullets": ["Read platform blueprint v3.1 -- found HQ: employer lists own office as internal bookable space", "Added feature #11 to ROADMAP.md with Property Wizard dependency", "Updated dashboard plan to include HQ nav placeholder in Step 1"]}
+  ],
+  "vibe": {"emoji": "\ud83d\udcdd", "text": "Planning session"},
+  "metrics": {
+    "commits": 2,
+    "linesAdded": 246,
+    "linesRemoved": 3,
+    "filesTouched": 4,
+    "stepsCompleted": 0,
+    "sessionDuration": "25m",
+    "agentsSpawned": 2,
+    "commitLog": [
+      {"hash": "16b83a8", "time": "23:52", "message": "Add session 8 wrap JSON", "type": "normal"},
+      {"hash": "5cf9da9", "time": "00:24", "message": "Scope Employer Dashboard [APP] and add HQ to roadmap", "type": "normal"}
+    ]
+  },
+  "commitGroups": [
+    {"name": "Employer Dashboard Scoping", "commits": ["5cf9da9"]},
+    {"name": "Housekeeping", "commits": ["16b83a8"]}
+  ],
+  "todaySessions": [
+    {"number": 9, "duration": "25m", "summary": "Scoped Employer Dashboard and discovered HQ feature from platform blueprint"}
+  ],
+  "timeline": [
+    {"time": "23:59", "desc": "Session started", "dur": "", "type": "start"},
+    {"time": "00:05", "desc": "Stand-up kick-off, reviewed project state", "dur": "6m", "type": "normal"},
+    {"time": "00:10", "desc": "Explored codebase for dashboard data dependencies", "dur": "5m", "type": "normal"},
+    {"time": "00:15", "desc": "Wrote employer-dashboard.md plan (6 steps)", "dur": "5m", "type": "major"},
+    {"time": "00:20", "desc": "Read platform blueprint, discovered HQ feature", "dur": "5m", "type": "major"},
+    {"time": "00:24", "desc": "Updated plan and roadmap with HQ feature #11", "dur": "4m", "type": "normal"}
+  ],
+  "decisions": [
+    {"title": "HQ as separate feature, not part of dashboard", "problem": "HQ (employer internal workspace) could be bundled into Employer Dashboard or kept separate", "solution": "Kept separate as feature #11 because it depends on Property Wizard (#8) which builds the 8-tab property management flow. Dashboard adds nav placeholder only."}
+  ],
+  "learnings": [],
+  "checks": {
+    "audit": {"pass": 4, "warn": 0, "fail": 0, "details": []},
+    "doeKit": {"version": "v1.30.1", "synced": true}
+  },
+  "awaitingSignOff": [
+    {
+      "feature": "Booking Flow [APP] (v0.4.5)",
+      "summary": "Multi-step booking modal: space selection, date/time, guests, price, confirmation",
+      "manualItems": 12,
+      "groups": [
+        {"name": "Modal & Navigation", "items": ["Clicking Book a Space opens modal with space selection grid", "Clicking per-space Book this space opens modal at date step", "Back button navigates between steps correctly", "Escape key closes modal", "Full flow works end-to-end: select space, pick date, set guests, confirm"]},
+        {"name": "Date & Duration", "items": ["Calendar renders with today highlighted, past dates greyed", "Duration options only show tiers the space supports", "Hourly selection shows available time slots"]},
+        {"name": "Pricing & Confirmation", "items": ["Price breakdown shows correct calculation for each duration type", "Guest count capped at space capacity", "Instant booking shows confirmation, manual shows pending message"]},
+        {"name": "Responsive", "items": ["Modal becomes full-screen on mobile"]}
+      ]
+    },
+    {
+      "feature": "Search & Discovery [APP] (v0.2.5)",
+      "summary": "Split-view search with filters, property cards, map, URL sync, responsive layout",
+      "manualItems": 19,
+      "groups": [
+        {"name": "Property Cards", "items": ["Card renders with thumbnail, name, city, rating, badges, and price in a compact layout", "Hover state shows subtle visual feedback (elevation or border)"]},
+        {"name": "Filters & URL Sync", "items": ["Selecting filters updates the URL bar in real time", "Pasting a URL with filter params pre-selects the correct filters", "Clear all resets filters and URL", "On mobile filters appear in a slide-up drawer"]},
+        {"name": "Map", "items": ["Map (or fallback) renders with pins at correct relative positions", "Pin shows price and uses brand colors"]},
+        {"name": "Split View & Interaction", "items": ["Split view shows list on left, map on right on desktop", "Hovering a card highlights the corresponding map pin", "Clicking a map pin scrolls to and highlights the corresponding card", "Filters reduce the visible results in both list and map", "On mobile List/Map toggle switches between full-width views", "Empty state shows when no properties match filters"]},
+        {"name": "Responsive & SSR", "items": ["View page source shows property names and prices in HTML (SSR working)", "Mobile layout is usable at 375px width (iPhone SE)", "Tablet layout (768px) shows a sensible split or toggle", "Empty state appears when all filters are set to impossible values", "Tab key navigates through filter controls in logical order"]}
+      ]
+    }
+  ],
+  "footer": {
+    "session": 9,
+    "streak": 3,
+    "lifetimeCommits": 81
+  },
+  "nextUp": "Promote Employer Dashboard to Queue with contracts, build Steps 1-6. Test Booking Flow + Search manual items."
+}
